@@ -5,7 +5,6 @@ import 'package:project_x/services/routes/app_rout_config.dart';
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
@@ -19,5 +18,4 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-
 }

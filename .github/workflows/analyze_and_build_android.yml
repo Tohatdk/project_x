@@ -1,0 +1,41 @@
+name: Analyze, Build and Deploy
+on: [push]
+jobs:
+  analyze:
+    name: "Analyze"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 🐦 Setup Flutter
+        uses: flutter-actions/setup-flutter@v3
+        with:
+          channel: stable
+          version: latest
+      - name: 📦 Install Dependencies
+        run: flutter pub get
+      - name: 'Analyzing'
+        run: dart analyze --fatal-infos
+      - name: 'Format'
+        run: dart format --set-exit-if-changed .
+  build:
+    name: Build
+    needs: analyze
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 🐦 Setup Flutter
+        uses: flutter-actions/setup-flutter@v3
+        with:
+          channel: stable
+          version: latest
+      - name: 📦 Install Dependencies
+        run: flutter pub get
+      - name: 🛠️ Build the web application
+        run: flutter build web -t lib/main.dart
+      - name: 🛠️ Build the android application
+        run: flutter build apk --split-per-abi
+      - name: ⬇️ Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: build
+          path: build/web

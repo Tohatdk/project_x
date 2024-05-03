@@ -7,9 +7,5 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FirebaseNotificationService().init();
   FirebaseAuth.instance.signOut();
-
   runApp(const MyApp());
 }
-
-
-

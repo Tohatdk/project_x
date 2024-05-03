@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:project_x/services/routes/app_route_paths.dart';
@@ -16,14 +15,14 @@ class MyDrawer extends StatelessWidget {
           Column(
             children: [
               GestureDetector(
-                onTap: (){
-                  context.push(AppRoutePaths.profilePageRoute.fullPath);},
+                onTap: () {
+                  context.push(AppRoutePaths.profilePageRoute.fullPath);
+                },
                 child: const UserAccountsDrawerHeader(
                   accountName: Text('Your Name'),
                   accountEmail: Text('your@email.com'),
                   currentAccountPicture: CircleAvatar(
                     child: FlutterLogo(size: 42.0),
-
                   ),
                 ),
               ),
@@ -58,7 +57,6 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
           ),
-
         ],
       ),
     );
