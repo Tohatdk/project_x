@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:project_x/src/features/auth_feature/domain/usecase/get_register_
 import 'package:project_x/src/features/auth_feature/domain/usecase/logout_use_case.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/send_reset_password_request_usecase.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/sign_in_usecase.dart';
+import 'package:project_x/src/features/auth_feature/presentation/blocs/auth_state_provider.dart';
 import 'package:project_x/src/features/auth_feature/presentation/blocs/forgot_password_page_bloc/forgot_password_page_bloc.dart';
 import 'package:project_x/src/features/auth_feature/presentation/blocs/login_page_bloc/login_page_bloc.dart';
 import 'package:project_x/src/features/auth_feature/presentation/blocs/register_page_bloc/register_page_bloc.dart';
@@ -24,14 +26,14 @@ final rootNaveKey = GlobalKey<NavigatorState>(debugLabel: 'rooNav');
 abstract class AppRouteConfig {
   static final GoRouter router = GoRouter(
     navigatorKey: rootNaveKey,
-    redirect: (context, state) {
-      final fullPath = state.fullPath ?? '';
-      if (fullPath.isEmpty) {
-        return AppRoutePaths.homePageRoute.path;
-      }
-
-      return null;
-    },
+    refreshListenable: getIt.get<AuthStateProvider>(),
+    initialLocation:  AppRoutePaths.homePageRoute.path,
+    // redirect: (context, state) {
+    //   final fullPath = state.fullPath ?? '';
+    //   if (fullPath.isEmpty) {
+    //     return;
+    //   }
+    // },
     routes: [
       GoRoute(
         path: AppRoutePaths.loginPageRoute.path,
@@ -65,14 +67,25 @@ abstract class AppRouteConfig {
         ],
       ),
       GoRoute(
-          path: AppRoutePaths.homePageRoute.path,
-          builder: (context, state) => const HomePage(),
-          routes: [
-            GoRoute(
-                path: AppRoutePaths.profilePageRoute.path,
-                builder: (context, state) => BlocProvider(create: (_)=>ProfilePageBloc(logoutUseCase: getIt.get<LogoutUseCase>()),
-                    child: const UserProfilePage())),
-          ]),
+        path: AppRoutePaths.homePageRoute.path,
+        builder: (context, state) => const HomePage(),
+        routes: [
+          GoRoute(
+              path: AppRoutePaths.profilePageRoute.path,
+
+              redirect: (context, state) {
+                final authState = context.read<AuthStateProvider>().state;
+                if(authState == AuthState.unauthenticated){
+                  print('asdsadsdaqwdwq');
+                  return AppRoutePaths.loginPageRoute.fullPath;
+                }
+              },
+              builder: (context, state) => BlocProvider(
+                  create: (_) => ProfilePageBloc(
+                      logoutUseCase: getIt.get<LogoutUseCase>()),
+                  child: const UserProfilePage())),
+        ],
+      ),
     ],
   );
 }

@@ -8,6 +8,8 @@ import 'package:project_x/src/features/auth_feature/domain/usecase/logout_use_ca
 import 'package:project_x/src/features/auth_feature/domain/usecase/send_reset_password_request_usecase.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/sign_in_usecase.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/get_register_usecase.dart';
+import 'package:project_x/src/features/auth_feature/presentation/blocs/auth_state_provider.dart';
+import 'package:provider/provider.dart';
 
 
 final getIt = GetIt.instance;
@@ -16,7 +18,7 @@ final getIt = GetIt.instance;
 //D v SOLID - eto Dependency Inversion Princiре
 void setup() {
   ///services
-  getIt.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
+  // getIt.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
   ///datasources
   getIt.registerFactory<AccountDataSource>(() => AccountDataSource());
   ///repositories
@@ -28,4 +30,5 @@ void setup() {
   getIt.registerFactory<LogoutUseCase>(() => LogoutUseCase(getIt.get<AccountRepository>()));
   getIt.registerFactory<SendResetPasswordRequestUseCase>(() => SendResetPasswordRequestUseCase(getIt.get<AccountRepository>()));
   getIt.registerFactory<ConfirmPasswordUseCase>(() => ConfirmPasswordUseCase(getIt.get<AccountRepository>()));
+  getIt.registerSingleton(AuthStateProvider());
 }

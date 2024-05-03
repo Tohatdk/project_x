@@ -17,7 +17,8 @@ class MyDrawer extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: (){
-                  context.push(AppRoutePaths.profilePageRoute.fullPath);},
+                  context.push(AppRoutePaths.profilePageRoute.fullPath);
+                  },
                 child: const UserAccountsDrawerHeader(
                   accountName: Text('Your Name'),
                   accountEmail: Text('your@email.com'),
