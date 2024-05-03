@@ -20,20 +20,20 @@ class RegisterPageBloc extends Bloc<RegisterPageEvent, RegisterPageState> {
         super(const RegisterPageState()) {
     on<EditEmailEvent>(_editEmail, transformer: _debounceEvent<EditEmailEvent>);
     on<EditPasswordEvent>(_changePassword,
-        transformer: _debounceEvent<EditPasswordEvent>);
+        transformer: _debounceEvent<EditPasswordEvent>,);
     on<EditConfimrationPasswordEvent>(_editConfirmPass,
-        transformer: _debounceEvent<EditConfimrationPasswordEvent>);
+        transformer: _debounceEvent<EditConfimrationPasswordEvent>,);
     on<TogglePasswordEvent>((_, emit) {
       final viewModel = state.passwordViewModel;
       emit(state.copyWith(
           passwordViewModel:
-          viewModel.copyWith(isObscured: !viewModel.isObscured)));
+          viewModel.copyWith(isObscured: !viewModel.isObscured),),);
     });
       on<ToggleConfirmationPasswordEvent>((_, emit) {
         final viewModel = state.repeatPasswordFromViewModel;
         emit(state.copyWith(
             repeatPasswordFromViewModel:
-            viewModel.copyWith(isObscured: !viewModel.isObscured)));
+            viewModel.copyWith(isObscured: !viewModel.isObscured),),);
       });
       on<SendDataEvent>(_submit);
       on<ClearError>((e, emit) {
@@ -44,12 +44,12 @@ class RegisterPageBloc extends Bloc<RegisterPageEvent, RegisterPageState> {
   final CreateUserUseCase _getRegisterUseCase; // Приватное поле для экземпляра CreateUserUseCase
 
   Future<void> _changePassword(EditPasswordEvent event, // Функция для изменения пароля
-      StateEmitter emit) async {
+      StateEmitter emit,) async {
     final passVm = state.passwordViewModel; // Получаем текущий viewModel для пароля
     emit(state.copyWith( // Изменяем состояние, обновляя значение пароля в viewModel
         passwordViewModel: passVm.copyWith(
           value: event.password, // Устанавливаем новое значение пароля
-        )));
+        ),),);
   }
 
   Future<void> _editEmail(EditEmailEvent event, StateEmitter emit) async { // Функция для изменения email
@@ -65,14 +65,14 @@ class RegisterPageBloc extends Bloc<RegisterPageEvent, RegisterPageState> {
     emit(state.copyWith( // Изменяем состояние, обновляя значение повторного ввода пароля в viewModel
         repeatPasswordFromViewModel: viewModel.copyWith(
           value: password, // Устанавливаем новое значение повторного ввода пароля
-        )));
+        ),),);
   }
 
   Future<void> _submit(SendDataEvent event, // Функция для отправки данных
-      Emitter<RegisterPageState> emit) async {
+      Emitter<RegisterPageState> emit,) async {
     emit(state.copyWith( // Изменяем состояние, устанавливая статус загрузки
       status: RegistrationStatus.loading,
-    ));
+    ),);
     final validEmail = isEmailValid(emit); // Проверяем валидность email
     final isPasswordValid = isPasswordsValid(emit); // Проверяем валидность пароля
     final bool isAllDataIsValid =
@@ -81,22 +81,22 @@ class RegisterPageBloc extends Bloc<RegisterPageEvent, RegisterPageState> {
     if (!isAllDataIsValid) { // Если не все данные валидны
       emit(state.copyWith( // Изменяем состояние, устанавливая статус ошибки и сообщение
           status: RegistrationStatus.failure,
-          message: 'Fucking shit happened on front hgside'));
+          message: 'Fucking shit happened on front hgside',),);
       return;
     }
 
     final result = await _getRegisterUseCase.call( // Вызываем метод call у экземпляра _getRegisterUseCase
         email: state.emailViewModel.value, // Передаем значение email
-        password: state.passwordViewModel.value); // Передаем значение пароля
+        password: state.passwordViewModel.value,); // Передаем значение пароля
 
     result.fold(
           (left) => // Если есть ошибки
       emit(state.copyWith(
-          status: RegistrationStatus.failure, message: left.message)), // Изменяем состояние, устанавливая статус ошибки и сообщение
+          status: RegistrationStatus.failure, message: left.message,),), // Изменяем состояние, устанавливая статус ошибки и сообщение
           (right) => // Если операция успешна
       emit(state.copyWith(
           status: RegistrationStatus.succeed, // Изменяем состояние, устанавливая статус успешной авторизации и сообщение
-          message: 'Успешно авторизован')),
+          message: 'Успешно авторизован',),),
     );
   }
 
@@ -128,14 +128,14 @@ class RegisterPageBloc extends Bloc<RegisterPageEvent, RegisterPageState> {
         isValid: isIdentical,
         errorMessage: confirmError,
       ),
-    ));
+    ),);
 
     return isValid && isIdentical; // Возвращаем true, если пароли валидны и совпадают
   }
 
   bool isEmailValid(Emitter<RegisterPageState> emit) { // Функция для проверки валидности email
     final emailRegex = RegExp( // Регулярное выражение для проверки email
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",);
     final isValid = emailRegex.hasMatch(state.emailViewModel.value); // Проверяем email по регулярному выражению
 
     if (!isValid) { // Если email не валиден
@@ -150,6 +150,6 @@ class RegisterPageBloc extends Bloc<RegisterPageEvent, RegisterPageState> {
   }
 
   Stream<T> _debounceEvent<T extends RegisterPageEvent>(Stream<T> stream, // Функция для добавления задержки к событиям
-      Stream<T> Function(T) s) =>
+      Stream<T> Function(T) s,) =>
       stream.debounceTime(const Duration(milliseconds: 500)).asyncExpand(s); // Применяем задержку к событиям
 }

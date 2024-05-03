@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-
+import 'package:project_x/services/routes/app_route_paths.dart';
 import 'package:project_x/src/features/auth_feature/presentation/blocs/register_page_bloc/register_page_bloc.dart';
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/components/email_text_form_field.dart';
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/components/password_text_form_field.dart';
-import 'package:project_x/services/routes/app_route_paths.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -33,12 +32,12 @@ class _RegisterPageState extends State<RegisterPage> {
       });
       passwordEditingController.addListener(() {
         context.read<RegisterPageBloc>().add(
-            RegisterPageEvent.editPassword(passwordEditingController.text));
+            RegisterPageEvent.editPassword(passwordEditingController.text),);
       });
       confirmPasswordEditingController.addListener(() {
         context.read<RegisterPageBloc>().add(
             RegisterPageEvent.editConfirmationPassword(
-                confirmPasswordEditingController.text));
+                confirmPasswordEditingController.text,),);
       });
     });
   }
@@ -67,10 +66,10 @@ class _RegisterPageState extends State<RegisterPage> {
                             bloc.add(const RegisterPageEvent.clearErrors());
                             context.pop();
                           },
-                          child: const Text('OK'))
+                          child: const Text('OK'),),
                     ],
                   );
-                });
+                },);
           case RegistrationStatus.succeed:
             context.loaderOverlay.hide();
             context.go(AppRoutePaths.homePageRoute.path);
@@ -111,21 +110,21 @@ class _RegisterPageState extends State<RegisterPage> {
                     PasswordTextFormField(
                       controller: confirmPasswordEditingController,
                       viewModel: confirmPasswordViewModel,
-                      hint: "Подвтердите пароль",
+                      hint: 'Подвтердите пароль',
                       onTap: () {
                         bloc.add(const RegisterPageEvent
-                            .toggleConfirmationPassword());
+                            .toggleConfirmationPassword(),);
                       },
                     ),
                     const SizedBox(height: 10),
                     ElevatedButton(
                       onPressed: () =>
                           bloc.add(const RegisterPageEvent.sendData()),
-                      child: const Text("Register"),
+                      child: const Text('Register'),
                     ),
                   ],
                 );
-              }),
+              },),
         ),
       ),
     );

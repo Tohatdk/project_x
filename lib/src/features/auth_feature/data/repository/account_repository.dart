@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:project_x/src/features/auth_feature/data/data_source/account_data_source.dart';
 import 'package:project_x/src/features/auth_feature/data/dto_account_mapper.dart';
 

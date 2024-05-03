@@ -16,7 +16,7 @@ class PasswordTextFormField extends StatelessWidget {
       controller: controller,
       obscureText: viewModel.isObscured,
       decoration: InputDecoration(
-        labelText: hint??"Введите пароль",
+        labelText: hint??'Введите пароль',
         errorText: viewModel.errorMessage,
         suffixIcon: IconButton(
           onPressed: onTap,

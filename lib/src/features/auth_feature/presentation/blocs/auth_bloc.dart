@@ -20,8 +20,7 @@ class AuthBloc {
         _emitState(AuthState.authenticated);
       }
     }, onError: (error) {
-      print('Ошибка в потоке аутентификации: $error');
-    });
+    },);
   }
 
   void _emitState(AuthState state) {

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:project_x/src/features/home_feature/home_page.dart';
@@ -25,7 +24,7 @@ Future<void> main()async{
             Device.iphone11,
             Device.tabletPortrait,
             Device.tabletLandscape,
-          ])
+          ],)
           ..addScenario(
             widget: const HomePage(),
             name: 'default home page',

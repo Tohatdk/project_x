@@ -1,7 +1,7 @@
+import 'package:either_dart/either.dart';
 import 'package:project_x/core/network/error.dart';
 import 'package:project_x/src/features/auth_feature/domain/entities/account_entity.dart';
 import 'package:project_x/src/features/auth_feature/domain/repository/account_repository.dart';
-import 'package:either_dart/either.dart';
 
 class SignInUseCase {
   final AccountRepository _accountRepository;

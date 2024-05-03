@@ -22,7 +22,7 @@ class LoginPageBloc extends Bloc<LoginPageEvent, LoginPageState> {
       final viewModel = state.passwordViewModel;
       emit(state.copyWith(
           passwordViewModel:
-          viewModel.copyWith(isObscured: !viewModel.isObscured)));
+          viewModel.copyWith(isObscured: !viewModel.isObscured),),);
     });
     on<ChangeStatusEvent>((event,emit){
       emit(state.copyWith(status: LoginPageStatus.none));
@@ -32,28 +32,28 @@ class LoginPageBloc extends Bloc<LoginPageEvent, LoginPageState> {
   final SignInUseCase _getLoginUseCase;
 
   Future<void> _onEmailChange(
-      EmailTextFieldChangeEvent event, Emitter<LoginPageState> emit) async {
+      EmailTextFieldChangeEvent event, Emitter<LoginPageState> emit,) async {
     emit(state.copyWith(
       emailViewModel: state.emailViewModel.copyWith(
         value: event.email,
       ),
-    ));
+    ),);
   }
 
   Future<void> _onPasswordChange(
-      PasswordTextFieldChangeEvent event, Emitter<LoginPageState> emit) async {
+      PasswordTextFieldChangeEvent event, Emitter<LoginPageState> emit,) async {
     emit(state.copyWith(
       passwordViewModel: state.passwordViewModel.copyWith(
         value: event.password,
       ),
-    ));
+    ),);
   }
 
   Future<void> _onSignIn(
-      SignInSubmitEvent event, Emitter<LoginPageState> emit) async {
+      SignInSubmitEvent event, Emitter<LoginPageState> emit,) async {
     emit(state.copyWith(
       status: LoginPageStatus.loading,
-    ));
+    ),);
 
     final email = state.emailViewModel;
     final isEmailValid = EmailValidator.validate(email.value);
@@ -62,7 +62,7 @@ class LoginPageBloc extends Bloc<LoginPageEvent, LoginPageState> {
       emit(state.copyWith(
         errorMessage: 'Проверьте корректность ваших данных',
         status: LoginPageStatus.failure,
-      ));
+      ),);
       return;
     }
 
@@ -75,10 +75,10 @@ class LoginPageBloc extends Bloc<LoginPageEvent, LoginPageState> {
         (left) => emit(state.copyWith(
           errorMessage: left.message,
           status: LoginPageStatus.failure,
-        )),
+        ),),
         (right) => emit(state.copyWith(
           status: LoginPageStatus.succeed,
-        )),
+        ),),
       );
   }
 }

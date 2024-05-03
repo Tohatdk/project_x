@@ -1,8 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter/material.dart';
 import 'package:project_x/di_dart.dart';
+import 'package:project_x/services/routes/app_route_paths.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/confitm_password_reset_usecase.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/get_register_usecase.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/send_reset_password_request_usecase.dart';
@@ -10,13 +10,11 @@ import 'package:project_x/src/features/auth_feature/domain/usecase/sign_in_useca
 import 'package:project_x/src/features/auth_feature/presentation/blocs/forgot_password_page_bloc/forgot_password_page_bloc.dart';
 import 'package:project_x/src/features/auth_feature/presentation/blocs/login_page_bloc/login_page_bloc.dart';
 import 'package:project_x/src/features/auth_feature/presentation/blocs/register_page_bloc/register_page_bloc.dart';
-
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/forgot_password_page.dart';
-import 'package:project_x/src/features/home_feature/home_page.dart';
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/login_page.dart';
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/register_page.dart';
+import 'package:project_x/src/features/home_feature/home_page.dart';
 import 'package:project_x/src/features/profile_feature/user_profile_page.dart';
-import 'package:project_x/services/routes/app_route_paths.dart';
 
 final rootNaveKey = GlobalKey<NavigatorState>(debugLabel: 'rooNav');
 
@@ -45,7 +43,7 @@ abstract class AppRouteConfig {
             builder: (context, state) {
               return BlocProvider(
                 create: (BuildContext context) => RegisterPageBloc(
-                    createUserUsecase: getIt.get<CreateUserUseCase>()),
+                    createUserUsecase: getIt.get<CreateUserUseCase>(),),
                 child: const RegisterPage(),
               );
             },
@@ -59,7 +57,7 @@ abstract class AppRouteConfig {
                       confirmPasswordUseCase:
                           getIt.get<ConfirmPasswordUseCase>(),
                     ),
-                child: const ForgotPasswordPage()),
+                child: const ForgotPasswordPage(),),
           ),
         ],
       ),
@@ -69,8 +67,8 @@ abstract class AppRouteConfig {
           routes: [
             GoRoute(
                 path: AppRoutePaths.profilePageRoute.path,
-                builder: (context, state) => const UserProfilePage()),
-          ]),
+                builder: (context, state) => const UserProfilePage(),),
+          ],),
     ],
   );
 }

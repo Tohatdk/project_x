@@ -9,7 +9,7 @@ class AccountDataSource {
     required String password,
   }) async {
     try {
-      UserCredential userCredential = await _firebaseAuth
+      final UserCredential userCredential = await _firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
 
       return userCredential;
@@ -25,15 +25,13 @@ class AccountDataSource {
     required String password,
   }) async {
     try {
-      UserCredential userCredential = await _firebaseAuth
+      final UserCredential userCredential = await _firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
       return userCredential;
     } on FirebaseAuthException catch (e) {
       throw IncorrectDataError(message: 'Ошибка входа в систему: ${e.code}');
     } catch (e) {
       throw UnauthorizedError(message: 'Ошибка создания пользователя: $e');
-    } catch (e) {
-      throw NetworkError(message: 'Ошибка входа в систему: $e');
     }
   }
 
@@ -48,11 +46,11 @@ class AccountDataSource {
       await _firebaseAuth.sendPasswordResetEmail(
         email: email,
         actionCodeSettings: ActionCodeSettings(
-          url: "https://pushnotitutorial-75506.web.app",
-          androidPackageName: "com.example.progress_bar",
+          url: 'https://pushnotitutorial-75506.web.app',
+          androidPackageName: 'com.example.progress_bar',
           androidMinimumVersion: '21',
           androidInstallApp: true,
-          iOSBundleId: "com.example.progress_bar",
+          iOSBundleId: 'com.example.progress_bar',
           handleCodeInApp: true,
         ),
       );
@@ -68,7 +66,7 @@ class AccountDataSource {
   Future<void> confirmPasswordReset(String code, String newPassword) async {
     try {
       await _firebaseAuth.confirmPasswordReset(
-          code: code, newPassword: newPassword);
+          code: code, newPassword: newPassword,);
     } on FirebaseAuthException catch (e) {
       throw IncorrectDataError(message: 'Ошибка входа в систему: ${e.code}');
     } catch (e) {

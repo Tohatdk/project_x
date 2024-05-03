@@ -1,8 +1,6 @@
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_x/src/features/profile_feature/user_profile_page_bloc/profile_page_bloc.dart';
 
@@ -29,7 +27,6 @@ class UserProfilePage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(20.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 _ProfileAvatar(imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/gettyimages-926895120.jpg?resize=1200:*',),
                 SizedBox(height: 20),
@@ -77,7 +74,7 @@ class UserProfilePage extends StatelessWidget {
     );
   }
 
-  void _showPopupMenu(BuildContext context) async {
+  Future<void> _showPopupMenu(BuildContext context) async {
     final bloc= context.read<ProfilePageBloc>();
     await showMenu(
       context: context,
@@ -118,9 +115,9 @@ class _ProfileAvatar extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
-                image: imageProvider, fit: BoxFit.cover),
+                image: imageProvider, fit: BoxFit.cover,),
           ),
-        )
+        ),
 
     );
   }

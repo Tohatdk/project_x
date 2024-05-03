@@ -4,10 +4,10 @@ import 'package:project_x/src/features/auth_feature/data/data_source/account_dat
 import 'package:project_x/src/features/auth_feature/data/repository/account_repository.dart';
 import 'package:project_x/src/features/auth_feature/domain/repository/account_repository.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/confitm_password_reset_usecase.dart';
+import 'package:project_x/src/features/auth_feature/domain/usecase/get_register_usecase.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/logout_use_case.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/send_reset_password_request_usecase.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/sign_in_usecase.dart';
-import 'package:project_x/src/features/auth_feature/domain/usecase/get_register_usecase.dart';
 
 
 final getIt = GetIt.instance;

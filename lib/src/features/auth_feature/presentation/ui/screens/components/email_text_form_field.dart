@@ -17,7 +17,7 @@ class EmailTextFormField extends StatelessWidget {
       controller: controller,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        labelText: "Email",
+        labelText: 'Email',
         prefixIcon: const Icon(Icons.email),
         errorText: viewModel.errorMessage,
         border: OutlineInputBorder(

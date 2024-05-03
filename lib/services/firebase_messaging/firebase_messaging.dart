@@ -22,21 +22,13 @@ class FirebaseNotificationService{
         localNotifications.showSimpleNotification(title:  notification.title??'', body:  notification.body??'', payload: 'hz che eto');
       }
     });
-    final fcmToken = await FirebaseMessaging.instance.getToken();
-    print('Message token: $fcmToken');
   }
 
   Future<void> _requestNotificationPermission() async {
-    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    final FirebaseMessaging messaging = FirebaseMessaging.instance;
 
     await messaging.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
+      
     );
   }
 
