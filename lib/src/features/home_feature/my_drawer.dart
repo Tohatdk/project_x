@@ -30,8 +30,8 @@ class MyDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 25.0),
                 child: ListTile(
-                  title: const Text('P r o f i l e'),
-                  leading: const Icon(Icons.person_outline),
+                  title: const Text('My Files'),
+                  leading: const Icon(Icons.account_balance_wallet_outlined),
                   onTap: () {},
                 ),
               ),
@@ -45,13 +45,20 @@ class MyDrawer extends StatelessWidget {
               ),
             ],
           ),
-          Padding( padding: const EdgeInsets.only(left: 25.0,bottom: 25.0),
+          const Padding(
+            padding: EdgeInsets.only(left: 25.0, bottom: 25.0),
             child: ListTile(
-              title: const Text('L O G O U T'),
-              leading: const Icon(Icons.logout),
-              onTap: () {},
+              title: Text(
+                'Project X',
+                style: TextStyle(
+                  fontSize: 20.0, // Размер текста
+                  fontWeight: FontWeight.bold, // Жирный шрифт
+                  color: Colors.black, // Цвет текста
+                ),
+              ),
             ),
           ),
+
         ],
       ),
     );

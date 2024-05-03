@@ -1,14 +1,17 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_x/src/features/profile_feature/user_profile_page_bloc/profile_page_bloc.dart';
 
 class UserProfilePage extends StatelessWidget {
   const UserProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('P r o f i l e'),
@@ -75,6 +78,7 @@ class UserProfilePage extends StatelessWidget {
   }
 
   void _showPopupMenu(BuildContext context) async {
+    final bloc= context.read<ProfilePageBloc>();
     await showMenu(
       context: context,
       position: const RelativeRect.fromLTRB(100, 100, 0, 0),
@@ -91,7 +95,8 @@ class UserProfilePage extends StatelessWidget {
             leading: Icon(Icons.logout),
             title: Text('Logout'),
           ),
-          onTap: () {},
+          onTap: () {
+         bloc.add(SignoutEvent() );             },
         ),
       ],
       elevation: 8.0,

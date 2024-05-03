@@ -10,13 +10,16 @@ part 'profile_page_state.dart';
 class ProfilePageBloc extends Bloc<ProfilePageEvent,ProfilePageState>{
   ProfilePageBloc({required LogoutUseCase logoutUseCase})
       :_logoutUseCase =logoutUseCase,
-        super(ProfilePageState()){
+        super(ProfilePageState('')){
     on<SignoutEvent>(_logout);
 
   }
   final LogoutUseCase _logoutUseCase;
 
   Future<void>_logout (SignoutEvent event,Emitter<ProfilePageState>emit)async{
-   // emit()
+    await _logoutUseCase.signOut();
+    emit(ProfilePageState( state.loggedOut));
   }
+
+
 }
