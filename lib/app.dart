@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         routerDelegate: AppRouteConfig.router.routerDelegate,
         routeInformationParser: AppRouteConfig.router.routeInformationParser,
-        routeInformationProvider: AppRouteConfig.router.routeInformationProvider,
+        routeInformationProvider:
+            AppRouteConfig.router.routeInformationProvider,
         builder: (context, child) {
           return LoaderOverlay(
             child: child ?? const SizedBox.shrink(),

@@ -11,14 +11,14 @@ class AuthStateProvider extends ChangeNotifier {
   AuthStateProvider() {
     _initAuthStateListener();
   }
-
   void _initAuthStateListener() {
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      _state = user == null ? AuthState.unauthenticated : AuthState.authenticated;
-      print(_state);
-      notifyListeners();
-    }, onError: (error) {
-      print('Error in authentication stream: $error');
-    });
+    FirebaseAuth.instance.authStateChanges().listen(
+      (User? user) {
+        _state =
+            user == null ? AuthState.unauthenticated : AuthState.authenticated;
+        notifyListeners();
+      },
+      onError: (error) {},
+    );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:project_x/src/features/auth_feature/data/data_source/account_data_source.dart';
 import 'package:project_x/src/features/auth_feature/data/repository/account_repository.dart';
@@ -9,7 +8,6 @@ import 'package:project_x/src/features/auth_feature/domain/usecase/logout_use_ca
 import 'package:project_x/src/features/auth_feature/domain/usecase/send_reset_password_request_usecase.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/sign_in_usecase.dart';
 import 'package:project_x/src/features/auth_feature/presentation/blocs/auth_state_provider.dart';
-
 
 final getIt = GetIt.instance;
 
