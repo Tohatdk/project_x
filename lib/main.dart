@@ -8,6 +8,7 @@ Future<void> main() async {
   await FirebaseNotificationService().init();
   FirebaseAuth.instance.signOut();
   runApp(const MyApp());
+  print('object');
 }
 
 
