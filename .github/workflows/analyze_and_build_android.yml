@@ -14,7 +14,7 @@ jobs:
       - name: 📦 Install Dependencies
         run: flutter pub get
       - name: 'Analyzing'
-        run: dart analyze
+        run: dart analyze --fatal-infos
 
   build:
     name: Build
