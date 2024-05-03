@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:project_x/services/routes/app_route_paths.dart';
 import 'package:project_x/src/features/auth_feature/presentation/blocs/login_page_bloc/login_page_bloc.dart';
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/components/email_text_form_field.dart';
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/components/password_text_form_field.dart';
-import 'package:project_x/services/routes/app_route_paths.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -28,8 +28,11 @@ class _LoginPageState extends State<LoginPage> {
             .add(EmailTextFieldChangeEvent(email: emailEditingController.text));
       });
       passwordEditingController.addListener(() {
-        context.read<LoginPageBloc>().add(PasswordTextFieldChangeEvent(
-            password: passwordEditingController.text));
+        context.read<LoginPageBloc>().add(
+              PasswordTextFieldChangeEvent(
+                password: passwordEditingController.text,
+              ),
+            );
       });
     });
   }
@@ -43,9 +46,7 @@ class _LoginPageState extends State<LoginPage> {
         if (state.status == LoginPageStatus.failure) {
           showFailure(context);
         }
-        if (state.status == LoginPageStatus.loading) {
-          print('show moadl loading');
-        }
+        if (state.status == LoginPageStatus.loading) {}
         if (state.status == LoginPageStatus.succeed) {
           context.go(AppRoutePaths.homePageRoute.path);
         }
@@ -66,13 +67,14 @@ class _LoginPageState extends State<LoginPage> {
                       viewModel: state.emailViewModel,
                       controller: emailEditingController,
                     ),
-                    const SizedBox(height: 15,),
+                    const SizedBox(
+                      height: 15,
+                    ),
                     PasswordTextFormField(
                       controller: passwordEditingController,
                       viewModel: passwordViewModel,
-                      onTap: (){
+                      onTap: () {
                         bloc.add(TogglePasswordEvent());
-
                       },
                     ),
                     const SizedBox(height: 10),
@@ -82,7 +84,8 @@ class _LoginPageState extends State<LoginPage> {
                         GestureDetector(
                           onTap: () {
                             context.go(
-                                AppRoutePaths.forgotPasswordPageRoute.fullPath);
+                              AppRoutePaths.forgotPasswordPageRoute.fullPath,
+                            );
                           },
                           child: const Text(
                             'Forgot password?',
@@ -95,21 +98,26 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 10),
                     ElevatedButton(
-                        onPressed: () {
-                          bloc.add(SignInSubmitEvent());
-                        },
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(120, 40),) ,
-                        child: const Text("Login")),
+                      onPressed: () {
+                        bloc.add(SignInSubmitEvent());
+                      },
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size(120, 40),
+                      ),
+                      child: const Text('Login'),
+                    ),
                     const SizedBox(height: 10),
                     ElevatedButton(
                       onPressed: () {
                         context.push(AppRoutePaths.registerPageRoute.fullPath);
                       },
                       style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(120, 40), // Установите здесь нужные вам размеры
+                        minimumSize: const Size(
+                          120,
+                          40,
+                        ), // Установите здесь нужные вам размеры
                       ),
-                      child: const Text("Register"),
+                      child: const Text('Register'),
                     ),
                   ],
                 );

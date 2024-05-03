@@ -19,4 +19,5 @@ class PasswordTextFieldChangeEvent extends LoginPageEvent {
 class SignInSubmitEvent extends LoginPageEvent {}
 
 class ChangeStatusEvent extends LoginPageEvent {}
-class TogglePasswordEvent extends LoginPageEvent{}
+
+class TogglePasswordEvent extends LoginPageEvent {}
