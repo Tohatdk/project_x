@@ -43,7 +43,8 @@ abstract class AppRouteConfig {
             builder: (context, state) {
               return BlocProvider(
                 create: (BuildContext context) => RegisterPageBloc(
-                    createUserUsecase: getIt.get<CreateUserUseCase>(),),
+                  createUserUsecase: getIt.get<CreateUserUseCase>(),
+                ),
                 child: const RegisterPage(),
               );
             },
@@ -51,24 +52,26 @@ abstract class AppRouteConfig {
           GoRoute(
             path: AppRoutePaths.forgotPasswordPageRoute.path,
             builder: (context, state) => BlocProvider(
-                create: (_) => ForgotPasswordPageBloc(
-                      sendResetPasswordRequestUseCase:
-                          getIt.get<SendResetPasswordRequestUseCase>(),
-                      confirmPasswordUseCase:
-                          getIt.get<ConfirmPasswordUseCase>(),
-                    ),
-                child: const ForgotPasswordPage(),),
+              create: (_) => ForgotPasswordPageBloc(
+                sendResetPasswordRequestUseCase:
+                    getIt.get<SendResetPasswordRequestUseCase>(),
+                confirmPasswordUseCase: getIt.get<ConfirmPasswordUseCase>(),
+              ),
+              child: const ForgotPasswordPage(),
+            ),
           ),
         ],
       ),
       GoRoute(
-          path: AppRoutePaths.homePageRoute.path,
-          builder: (context, state) => const HomePage(),
-          routes: [
-            GoRoute(
-                path: AppRoutePaths.profilePageRoute.path,
-                builder: (context, state) => const UserProfilePage(),),
-          ],),
+        path: AppRoutePaths.homePageRoute.path,
+        builder: (context, state) => const HomePage(),
+        routes: [
+          GoRoute(
+            path: AppRoutePaths.profilePageRoute.path,
+            builder: (context, state) => const UserProfilePage(),
+          ),
+        ],
+      ),
     ],
   );
 }

@@ -37,8 +37,11 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             .add(PasswordInputEvent(password: passwordEditingController.text));
       });
       confirmPasswordEditingController.addListener(() {
-        context.read<ForgotPasswordPageBloc>().add(ConfirmPasswordInputEvent(
-            password: confirmPasswordEditingController.text,),);
+        context.read<ForgotPasswordPageBloc>().add(
+              ConfirmPasswordInputEvent(
+                password: confirmPasswordEditingController.text,
+              ),
+            );
       });
     });
   }
@@ -71,13 +74,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       viewModel: state.passwordViewModel,
                       onTap: () {
                         bloc.add(
-                            TogglePasswordEvent(),);
+                          TogglePasswordEvent(),
+                        );
                       },
                     ),
                     PasswordTextFormField(
                       controller: confirmPasswordEditingController,
                       viewModel: state.repeatPasswordFromViewModel,
-                      onTap: (){
+                      onTap: () {
                         bloc.add(ToggleConfirmationPasswordEvent());
                       },
                     ),

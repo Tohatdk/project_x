@@ -66,7 +66,9 @@ class AccountDataSource {
   Future<void> confirmPasswordReset(String code, String newPassword) async {
     try {
       await _firebaseAuth.confirmPasswordReset(
-          code: code, newPassword: newPassword,);
+        code: code,
+        newPassword: newPassword,
+      );
     } on FirebaseAuthException catch (e) {
       throw IncorrectDataError(message: 'Ошибка входа в систему: ${e.code}');
     } catch (e) {

@@ -37,14 +37,19 @@ class AccountRepositoryImpl implements AccountRepository {
   }
 
   @override
-  Future<void> confirmPassword({ required String newPassword,required String code}) async {
-    final userCredentials = await _accountDataSource.confirmPasswordReset(newPassword,code);
+  Future<void> confirmPassword({
+    required String newPassword,
+    required String code,
+  }) async {
+    final userCredentials =
+        await _accountDataSource.confirmPasswordReset(newPassword, code);
     return userCredentials;
   }
 
   @override
   Future<void> sendResetPassword({required String email}) async {
-    final userCredentials = await _accountDataSource.sendResetPasswordRequest(email);
+    final userCredentials =
+        await _accountDataSource.sendResetPasswordRequest(email);
     return userCredentials;
   }
 }

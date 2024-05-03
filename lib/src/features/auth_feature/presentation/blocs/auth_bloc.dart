@@ -13,14 +13,16 @@ class AuthBloc {
   Stream<AuthState> get state => _userStreamController.stream;
 
   void _initAuthStateListener() {
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user == null) {
-        _emitState(AuthState.unauthenticated);
-      } else {
-        _emitState(AuthState.authenticated);
-      }
-    }, onError: (error) {
-    },);
+    FirebaseAuth.instance.authStateChanges().listen(
+      (User? user) {
+        if (user == null) {
+          _emitState(AuthState.unauthenticated);
+        } else {
+          _emitState(AuthState.authenticated);
+        }
+      },
+      onError: (error) {},
+    );
   }
 
   void _emitState(AuthState state) {

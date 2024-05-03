@@ -12,7 +12,7 @@ class SendResetPasswordRequestUseCase {
   }) async {
     try {
       await _accountRepository.sendResetPassword(
-       email: email,
+        email: email,
       );
       return const Right(null);
     } on AppError catch (error) {

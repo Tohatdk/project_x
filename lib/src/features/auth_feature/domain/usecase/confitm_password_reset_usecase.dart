@@ -8,11 +8,14 @@ class ConfirmPasswordUseCase {
   const ConfirmPasswordUseCase(this._accountRepository);
 
   Future<Either<AppError, void>> call({
-    required String newPassword,required String code,
+    required String newPassword,
+    required String code,
   }) async {
     try {
       await _accountRepository.confirmPassword(
-    newPassword:newPassword,code: code,);
+        newPassword: newPassword,
+        code: code,
+      );
       return const Right(null);
     } on AppError catch (error) {
       return Left(error);

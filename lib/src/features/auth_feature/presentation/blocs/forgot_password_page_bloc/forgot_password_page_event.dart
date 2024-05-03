@@ -21,6 +21,7 @@ class ConfirmPasswordInputEvent extends ForgotPasswordPageEvent {
 
   const ConfirmPasswordInputEvent({required this.password});
 }
+
 class CodeInputEvent extends ForgotPasswordPageEvent {
   final String code;
 
@@ -35,5 +36,7 @@ class SubmitCodeAndPasswordEvent extends ForgotPasswordPageEvent {
 
   SubmitCodeAndPasswordEvent({required this.code, required this.password});
 }
-class TogglePasswordEvent extends ForgotPasswordPageEvent{}
-class ToggleConfirmationPasswordEvent extends ForgotPasswordPageEvent{}
+
+class TogglePasswordEvent extends ForgotPasswordPageEvent {}
+
+class ToggleConfirmationPasswordEvent extends ForgotPasswordPageEvent {}

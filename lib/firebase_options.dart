@@ -74,5 +74,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'pushnotitutorial-75506.appspot.com',
     measurementId: 'G-SDW8H4KSTL',
   );
-
 }

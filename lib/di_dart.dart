@@ -9,7 +9,6 @@ import 'package:project_x/src/features/auth_feature/domain/usecase/logout_use_ca
 import 'package:project_x/src/features/auth_feature/domain/usecase/send_reset_password_request_usecase.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/sign_in_usecase.dart';
 
-
 final getIt = GetIt.instance;
 
 //dependency injection = di injection = инъекция
@@ -17,15 +16,29 @@ final getIt = GetIt.instance;
 void setup() {
   ///services
   getIt.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
+
   ///datasources
   getIt.registerFactory<AccountDataSource>(() => AccountDataSource());
+
   ///repositories
-  getIt.registerFactory<AccountRepository>(() => AccountRepositoryImpl(getIt.get<AccountDataSource>()));
+  getIt.registerFactory<AccountRepository>(
+    () => AccountRepositoryImpl(getIt.get<AccountDataSource>()),
+  );
 
   ///authUseCases
-  getIt.registerFactory<SignInUseCase>(() => SignInUseCase(getIt.get<AccountRepository>()));
-  getIt.registerFactory<CreateUserUseCase>(() => CreateUserUseCase(getIt.get<AccountRepository>()));
-  getIt.registerFactory<LogoutUseCase>(() => LogoutUseCase(getIt.get<AccountRepository>()));
-  getIt.registerFactory<SendResetPasswordRequestUseCase>(() => SendResetPasswordRequestUseCase(getIt.get<AccountRepository>()));
-  getIt.registerFactory<ConfirmPasswordUseCase>(() => ConfirmPasswordUseCase(getIt.get<AccountRepository>()));
+  getIt.registerFactory<SignInUseCase>(
+    () => SignInUseCase(getIt.get<AccountRepository>()),
+  );
+  getIt.registerFactory<CreateUserUseCase>(
+    () => CreateUserUseCase(getIt.get<AccountRepository>()),
+  );
+  getIt.registerFactory<LogoutUseCase>(
+    () => LogoutUseCase(getIt.get<AccountRepository>()),
+  );
+  getIt.registerFactory<SendResetPasswordRequestUseCase>(
+    () => SendResetPasswordRequestUseCase(getIt.get<AccountRepository>()),
+  );
+  getIt.registerFactory<ConfirmPasswordUseCase>(
+    () => ConfirmPasswordUseCase(getIt.get<AccountRepository>()),
+  );
 }

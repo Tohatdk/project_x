@@ -16,7 +16,7 @@ jobs:
       - name: 'Analyzing'
         run: dart analyze --fatal-infos
       - name: 'Format'
-        run: dart format --set-exit-if-changed
+        run: dart format --set-exit-if-changed .
   build:
     name: Build
     needs: analyze

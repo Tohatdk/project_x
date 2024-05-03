@@ -6,9 +6,15 @@ class PasswordTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final PasswordFormViewModel viewModel;
   // final  void Function()? onTap; //i.e. VoidCallback == void Function() //true
-  final  VoidCallback? onTap; //i.e. VoidCallback == void Function() //true
+  final VoidCallback? onTap; //i.e. VoidCallback == void Function() //true
 
-  const PasswordTextFormField({super.key, required this.controller, required this.viewModel, this.onTap, this.hint});
+  const PasswordTextFormField({
+    super.key,
+    required this.controller,
+    required this.viewModel,
+    this.onTap,
+    this.hint,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +22,7 @@ class PasswordTextFormField extends StatelessWidget {
       controller: controller,
       obscureText: viewModel.isObscured,
       decoration: InputDecoration(
-        labelText: hint??'Введите пароль',
+        labelText: hint ?? 'Введите пароль',
         errorText: viewModel.errorMessage,
         suffixIcon: IconButton(
           onPressed: onTap,
@@ -27,7 +33,8 @@ class PasswordTextFormField extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 2.0),
+          borderSide:
+              BorderSide(color: Theme.of(context).primaryColor, width: 2.0),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),

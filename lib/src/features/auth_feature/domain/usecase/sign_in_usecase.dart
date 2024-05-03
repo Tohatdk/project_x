@@ -12,13 +12,13 @@ class SignInUseCase {
     required String email,
     required String password,
   }) async {
-    try{
+    try {
       final account = await _accountRepository.signIn(
         email: email,
         password: password,
       );
       return Right(account);
-    }on AppError catch (error){
+    } on AppError catch (error) {
       return Left(error);
     }
   }
