@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project_x/src/features/profile_feature/user_profile_page_bloc/profile_page_bloc.dart';
+import 'package:project_x/src/features/profile_feature/presentation/bloc/user_profile_page_bloc/profile_page_bloc.dart';
+
 
 class UserProfilePage extends StatelessWidget {
   const UserProfilePage({super.key});

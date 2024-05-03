@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +15,9 @@ import 'package:project_x/src/features/auth_feature/presentation/ui/screens/forg
 import 'package:project_x/src/features/home_feature/home_page.dart';
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/login_page.dart';
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/register_page.dart';
-import 'package:project_x/src/features/profile_feature/user_profile_page.dart';
+import 'package:project_x/src/features/profile_feature/presentation/bloc/user_profile_page_bloc/profile_page_bloc.dart';
+import 'package:project_x/src/features/profile_feature/presentation/ui/pages/user_profile_page.dart';
 import 'package:project_x/services/routes/app_route_paths.dart';
-import 'package:project_x/src/features/profile_feature/user_profile_page_bloc/profile_page_bloc.dart';
 
 final rootNaveKey = GlobalKey<NavigatorState>(debugLabel: 'rooNav');
 
