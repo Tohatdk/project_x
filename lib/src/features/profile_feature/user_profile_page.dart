@@ -122,4 +122,3 @@ class _ProfileAvatar extends StatelessWidget {
     );
   }
 }
-

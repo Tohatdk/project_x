@@ -9,6 +9,4 @@ linter:
   rules:
      avoid_print: true
      prefer_single_quotes: true
-     eol_at_end_of_file: false
-     sort_pub_dependencies: false
      avoid_classes_with_only_static_members: false

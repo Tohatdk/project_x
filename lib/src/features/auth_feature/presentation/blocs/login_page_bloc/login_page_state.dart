@@ -11,4 +11,3 @@ const factory LoginPageState({
   @Default('') String errorMessage,
 })=_LoginPageState;
 }
-

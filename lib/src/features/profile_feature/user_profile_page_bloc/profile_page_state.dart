@@ -4,10 +4,4 @@ class ProfilePageState{
   final String loggedOut;
 
   ProfilePageState(this.loggedOut);
-
-
-
-
-
-
 }

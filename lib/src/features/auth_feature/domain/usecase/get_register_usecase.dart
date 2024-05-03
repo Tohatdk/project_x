@@ -8,19 +8,18 @@ class CreateUserUseCase {
 
   const CreateUserUseCase(this._accountRepository);
 
-  Future<Either<AppError,AccountEntity?>> call({
+  Future<Either<AppError, AccountEntity?>> call({
     required String email,
     required String password,
   }) async {
-   try{
-     final account = await _accountRepository.createUser(
-      email: email,
-      password: password,
-    );
-    return Right(account);
-  }on AppError catch (error){
-  return Left(error);
+    try {
+      final account = await _accountRepository.createUser(
+        email: email,
+        password: password,
+      );
+      return Right(account);
+    } on AppError catch (error) {
+      return Left(error);
+    }
   }
 }
-}
-

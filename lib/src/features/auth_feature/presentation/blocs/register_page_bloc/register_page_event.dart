@@ -10,4 +10,3 @@ class RegisterPageEvent with _$RegisterPageEvent{
   const factory RegisterPageEvent.sendData() = SendDataEvent;
   const factory RegisterPageEvent.clearErrors() = ClearError;
 }
-
