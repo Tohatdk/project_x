@@ -4,12 +4,11 @@ import 'package:project_x/src/features/auth_feature/data/data_source/account_dat
 import 'package:project_x/src/features/auth_feature/data/repository/account_repository.dart';
 import 'package:project_x/src/features/auth_feature/domain/repository/account_repository.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/confitm_password_reset_usecase.dart';
+import 'package:project_x/src/features/auth_feature/domain/usecase/get_register_usecase.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/logout_use_case.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/send_reset_password_request_usecase.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/sign_in_usecase.dart';
-import 'package:project_x/src/features/auth_feature/domain/usecase/get_register_usecase.dart';
 import 'package:project_x/src/features/auth_feature/presentation/blocs/auth_state_provider.dart';
-import 'package:provider/provider.dart';
 
 
 final getIt = GetIt.instance;
@@ -21,14 +20,27 @@ void setup() {
   // getIt.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
   ///datasources
   getIt.registerFactory<AccountDataSource>(() => AccountDataSource());
+
   ///repositories
-  getIt.registerFactory<AccountRepository>(() => AccountRepositoryImpl(getIt.get<AccountDataSource>()));
+  getIt.registerFactory<AccountRepository>(
+    () => AccountRepositoryImpl(getIt.get<AccountDataSource>()),
+  );
 
   ///authUseCases
-  getIt.registerFactory<SignInUseCase>(() => SignInUseCase(getIt.get<AccountRepository>()));
-  getIt.registerFactory<CreateUserUseCase>(() => CreateUserUseCase(getIt.get<AccountRepository>()));
-  getIt.registerFactory<LogoutUseCase>(() => LogoutUseCase(getIt.get<AccountRepository>()));
-  getIt.registerFactory<SendResetPasswordRequestUseCase>(() => SendResetPasswordRequestUseCase(getIt.get<AccountRepository>()));
-  getIt.registerFactory<ConfirmPasswordUseCase>(() => ConfirmPasswordUseCase(getIt.get<AccountRepository>()));
+  getIt.registerFactory<SignInUseCase>(
+    () => SignInUseCase(getIt.get<AccountRepository>()),
+  );
+  getIt.registerFactory<CreateUserUseCase>(
+    () => CreateUserUseCase(getIt.get<AccountRepository>()),
+  );
+  getIt.registerFactory<LogoutUseCase>(
+    () => LogoutUseCase(getIt.get<AccountRepository>()),
+  );
+  getIt.registerFactory<SendResetPasswordRequestUseCase>(
+    () => SendResetPasswordRequestUseCase(getIt.get<AccountRepository>()),
+  );
+  getIt.registerFactory<ConfirmPasswordUseCase>(
+    () => ConfirmPasswordUseCase(getIt.get<AccountRepository>()),
+  );
   getIt.registerSingleton(AuthStateProvider());
 }

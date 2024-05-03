@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project_x/app.dart';
 import 'package:project_x/di_dart.dart';
@@ -10,6 +9,3 @@ Future<void> main() async {
   setup();
   runApp(const MyApp());
 }
-
-
-

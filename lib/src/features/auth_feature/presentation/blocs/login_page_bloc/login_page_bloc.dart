@@ -20,11 +20,14 @@ class LoginPageBloc extends Bloc<LoginPageEvent, LoginPageState> {
     on<SignInSubmitEvent>(_onSignIn);
     on<TogglePasswordEvent>((_, emit) {
       final viewModel = state.passwordViewModel;
-      emit(state.copyWith(
+      emit(
+        state.copyWith(
           passwordViewModel:
-          viewModel.copyWith(isObscured: !viewModel.isObscured)));
+              viewModel.copyWith(isObscured: !viewModel.isObscured),
+        ),
+      );
     });
-    on<ChangeStatusEvent>((event,emit){
+    on<ChangeStatusEvent>((event, emit) {
       emit(state.copyWith(status: LoginPageStatus.none));
     });
   }
@@ -32,53 +35,71 @@ class LoginPageBloc extends Bloc<LoginPageEvent, LoginPageState> {
   final SignInUseCase _getLoginUseCase;
 
   Future<void> _onEmailChange(
-      EmailTextFieldChangeEvent event, Emitter<LoginPageState> emit) async {
-    emit(state.copyWith(
-      emailViewModel: state.emailViewModel.copyWith(
-        value: event.email,
+    EmailTextFieldChangeEvent event,
+    Emitter<LoginPageState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        emailViewModel: state.emailViewModel.copyWith(
+          value: event.email,
+        ),
       ),
-    ));
+    );
   }
 
   Future<void> _onPasswordChange(
-      PasswordTextFieldChangeEvent event, Emitter<LoginPageState> emit) async {
-    emit(state.copyWith(
-      passwordViewModel: state.passwordViewModel.copyWith(
-        value: event.password,
+    PasswordTextFieldChangeEvent event,
+    Emitter<LoginPageState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        passwordViewModel: state.passwordViewModel.copyWith(
+          value: event.password,
+        ),
       ),
-    ));
+    );
   }
 
   Future<void> _onSignIn(
-      SignInSubmitEvent event, Emitter<LoginPageState> emit) async {
-    emit(state.copyWith(
-      status: LoginPageStatus.loading,
-    ));
+    SignInSubmitEvent event,
+    Emitter<LoginPageState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        status: LoginPageStatus.loading,
+      ),
+    );
 
     final email = state.emailViewModel;
     final isEmailValid = EmailValidator.validate(email.value);
     final password = state.passwordViewModel;
     if (!isEmailValid && password.value.length < 6) {
-      emit(state.copyWith(
-        errorMessage: 'Проверьте корректность ваших данных',
-        status: LoginPageStatus.failure,
-      ));
+      emit(
+        state.copyWith(
+          errorMessage: 'Проверьте корректность ваших данных',
+          status: LoginPageStatus.failure,
+        ),
+      );
       return;
     }
 
-      final result = await _getLoginUseCase.execute(
-        email: email.value,
-        password: state.passwordViewModel.value,
-      );
+    final result = await _getLoginUseCase.execute(
+      email: email.value,
+      password: state.passwordViewModel.value,
+    );
 
-      result.fold(
-        (left) => emit(state.copyWith(
+    result.fold(
+      (left) => emit(
+        state.copyWith(
           errorMessage: left.message,
           status: LoginPageStatus.failure,
-        )),
-        (right) => emit(state.copyWith(
+        ),
+      ),
+      (right) => emit(
+        state.copyWith(
           status: LoginPageStatus.succeed,
-        )),
-      );
+        ),
+      ),
+    );
   }
 }

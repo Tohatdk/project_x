@@ -1,13 +1,7 @@
-part of'profile_page_bloc.dart';
+part of 'profile_page_bloc.dart';
 
-class ProfilePageState{
+class ProfilePageState {
   final String loggedOut;
 
   ProfilePageState(this.loggedOut);
-
-
-
-
-
-
 }

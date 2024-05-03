@@ -1,8 +1,5 @@
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_x/src/features/profile_feature/presentation/bloc/user_profile_page_bloc/profile_page_bloc.dart';
 
@@ -12,7 +9,6 @@ class UserProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('P r o f i l e'),
@@ -30,9 +26,11 @@ class UserProfilePage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(20.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                _ProfileAvatar(imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/gettyimages-926895120.jpg?resize=1200:*',),
+                _ProfileAvatar(
+                  imageUrl:
+                      'https://hips.hearstapps.com/hmg-prod/images/gettyimages-926895120.jpg?resize=1200:*',
+                ),
                 SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -78,8 +76,8 @@ class UserProfilePage extends StatelessWidget {
     );
   }
 
-  void _showPopupMenu(BuildContext context) async {
-    final bloc= context.read<ProfilePageBloc>();
+  Future<void> _showPopupMenu(BuildContext context) async {
+    final bloc = context.read<ProfilePageBloc>();
     await showMenu(
       context: context,
       position: const RelativeRect.fromLTRB(100, 100, 0, 0),
@@ -97,7 +95,8 @@ class UserProfilePage extends StatelessWidget {
             title: Text('Logout'),
           ),
           onTap: () {
-         bloc.add(SignoutEvent() );             },
+            bloc.add(SignoutEvent());
+          },
         ),
       ],
       elevation: 8.0,
@@ -113,17 +112,17 @@ class _ProfileAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: imageUrl,
-        imageBuilder: (context, imageProvider) => Container(
-          width: 125.0,
-          height: 125.0,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-                image: imageProvider, fit: BoxFit.cover),
+      imageBuilder: (context, imageProvider) => Container(
+        width: 125.0,
+        height: 125.0,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            image: imageProvider,
+            fit: BoxFit.cover,
           ),
-        )
-
+        ),
+      ),
     );
   }
 }
-

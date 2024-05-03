@@ -1,14 +1,11 @@
-
-
-class AccountEntity{
+class AccountEntity {
   final String? email;
   final String? id;
   final String? accessToken;
 
-
- AccountEntity({
-   this.email,
-   this.id,
+  AccountEntity({
+    this.email,
+    this.id,
     this.accessToken,
- });
+  });
 }
