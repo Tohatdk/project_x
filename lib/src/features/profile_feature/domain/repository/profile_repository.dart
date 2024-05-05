@@ -3,13 +3,17 @@ import 'package:project_x/src/features/profile_feature/domain/entities/profile_e
 abstract interface class ProfileRepository {
   Future<ProfileEntity> getProfileData();
 
-  Future<void> updateEmail();
+  Future<void> updateEmail({
+    required String email,
+  });
 
-  Future<void> updatePhone();
+  Future<void> updatePhoto({
+    required String photoUrl,
+  });
 
-  Future<void> updatePhoto();
-
-  Future<void> updateUsername();
+  Future<void> updateUsername({
+    required String username,
+  });
 
   Future<void> deleteAccount();
 }

@@ -5,7 +5,9 @@ class UpdatePhotoUrlUseCase {
 
   const UpdatePhotoUrlUseCase(this._profileRepository);
 
-  Future<void> call() async {
-    await _profileRepository.updatePhoto();
+  Future<void> call({
+    required String photoUrl,
+  }) async {
+    await _profileRepository.updatePhoto(photoUrl: photoUrl);
   }
 }

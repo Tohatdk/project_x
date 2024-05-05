@@ -5,7 +5,9 @@ class UpdateEmailUseCase {
 
   const UpdateEmailUseCase(this._profileRepository);
 
-  Future<void> call() async {
-    await _profileRepository.updateEmail();
+  Future<void> call({
+    required String email,
+  }) async {
+    await _profileRepository.updateEmail(email: email);
   }
 }

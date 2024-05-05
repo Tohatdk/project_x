@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:project_x/src/features/profile_feature/domain/repository/profile_repository.dart';
 
 class UpdateUsernameUseCase {
@@ -5,7 +6,9 @@ class UpdateUsernameUseCase {
 
   const UpdateUsernameUseCase(this._profileRepository);
 
-  Future<void> call() async {
-    await _profileRepository.updateUsername();
+  Future<void> call({
+    required String username,
+  }) async {
+    await _profileRepository.updateUsername(username: username);
   }
 }
