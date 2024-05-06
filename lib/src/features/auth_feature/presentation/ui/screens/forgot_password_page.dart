@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:project_x/services/routes/app_route_paths.dart';
 import 'package:project_x/src/features/auth_feature/presentation/blocs/forgot_password_page_bloc/forgot_password_page_bloc.dart';
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/components/email_text_form_field.dart';
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/components/password_text_form_field.dart';
-
-import 'package:project_x/services/routes/app_route_paths.dart';
-import 'package:go_router/go_router.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -38,8 +37,11 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             .add(PasswordInputEvent(password: passwordEditingController.text));
       });
       confirmPasswordEditingController.addListener(() {
-        context.read<ForgotPasswordPageBloc>().add(ConfirmPasswordInputEvent(
-            password: confirmPasswordEditingController.text));
+        context.read<ForgotPasswordPageBloc>().add(
+              ConfirmPasswordInputEvent(
+                password: confirmPasswordEditingController.text,
+              ),
+            );
       });
     });
   }
@@ -54,7 +56,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             if (state.status == ForgotPageStatus.failure) {
               showFailure(context, state.errorMessage);
             } else if (state.status == ForgotPageStatus.loading) {
-              print('show loading overlay'); //TODO: implement
             } else if (state.status == ForgotPageStatus.resetSucceed) {
               GoRouter.of(context).go(AppRoutePaths.loginPageRoute.fullPath);
             }
@@ -73,13 +74,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       viewModel: state.passwordViewModel,
                       onTap: () {
                         bloc.add(
-                            TogglePasswordEvent());
+                          TogglePasswordEvent(),
+                        );
                       },
                     ),
                     PasswordTextFormField(
                       controller: confirmPasswordEditingController,
                       viewModel: state.repeatPasswordFromViewModel,
-                      onTap: (){
+                      onTap: () {
                         bloc.add(ToggleConfirmationPasswordEvent());
                       },
                     ),
@@ -106,7 +108,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     ),
                     ElevatedButton(
                       onPressed: () => bloc.add(EmailSubmitEvent()),
-                      child: const Text("Continue"),
+                      child: const Text('Continue'),
                     ),
                   ],
                 );
@@ -143,4 +145,3 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     super.dispose();
   }
 }
-

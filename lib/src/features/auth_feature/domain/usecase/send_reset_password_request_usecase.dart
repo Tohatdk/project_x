@@ -1,7 +1,6 @@
-import 'package:project_x/core/network/error.dart';
-
-import 'package:project_x/src/features/auth_feature/domain/repository/account_repository.dart';
 import 'package:either_dart/either.dart';
+import 'package:project_x/core/network/error.dart';
+import 'package:project_x/src/features/auth_feature/domain/repository/account_repository.dart';
 
 class SendResetPasswordRequestUseCase {
   final AccountRepository _accountRepository;
@@ -13,7 +12,7 @@ class SendResetPasswordRequestUseCase {
   }) async {
     try {
       await _accountRepository.sendResetPassword(
-       email: email,
+        email: email,
       );
       return const Right(null);
     } on AppError catch (error) {

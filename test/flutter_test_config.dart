@@ -6,6 +6,7 @@
 /// https://opensource.org/licenses/BSD-3-Clause
 /// ***************************************************
 ///
+library;
 
 import 'dart:async';
 import 'dart:io';
@@ -14,7 +15,7 @@ import 'package:golden_toolkit/golden_toolkit.dart';
 
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   return GoldenToolkit.runWithConfiguration(
-        () async {
+    () async {
       await loadAppFonts();
       await testMain();
     },

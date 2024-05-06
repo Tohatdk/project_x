@@ -11,9 +11,10 @@
 //     if(user == null){
 //       return;
 //     }
-//     user.updatePassword(displayName);
-//     user.updatePhoneNumber( ??);
-//     user.updatePhotoURL(' ');
-//     user.delete(displayName);
+//     user.updatePassword('password');
+//     user.updatePhoneNumber(PhoneAuthProvider.credential(verificationId: '', smsCode: ''));
+//     _firebaseAuth.verifyPhoneNumber(verificationCompleted: verificationCompleted, verificationFailed: verificationFailed, codeSent: codeSent, codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
+//     user.updatePhotoURL('photo');
+//     user.delete();
 //   }
 // }
