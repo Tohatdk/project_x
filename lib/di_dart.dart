@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:project_x/src/features/auth_feature/data/data_source/account_data_source.dart';
 import 'package:project_x/src/features/auth_feature/data/repository/account_repository.dart';
@@ -8,6 +7,7 @@ import 'package:project_x/src/features/auth_feature/domain/usecase/get_register_
 import 'package:project_x/src/features/auth_feature/domain/usecase/logout_use_case.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/send_reset_password_request_usecase.dart';
 import 'package:project_x/src/features/auth_feature/domain/usecase/sign_in_usecase.dart';
+import 'package:project_x/src/features/auth_feature/presentation/blocs/auth_state_provider.dart';
 
 final getIt = GetIt.instance;
 
@@ -15,8 +15,7 @@ final getIt = GetIt.instance;
 //D v SOLID - eto Dependency Inversion Princiре
 void setup() {
   ///services
-  getIt.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
-
+  // getIt.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
   ///datasources
   getIt.registerFactory<AccountDataSource>(() => AccountDataSource());
 
@@ -41,4 +40,5 @@ void setup() {
   getIt.registerFactory<ConfirmPasswordUseCase>(
     () => ConfirmPasswordUseCase(getIt.get<AccountRepository>()),
   );
+  getIt.registerSingleton(AuthStateProvider());
 }

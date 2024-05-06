@@ -4,7 +4,6 @@ class AppRoutePaths {
     path: '/home',
     fullPath: '/home',
   );
-
   static const loginPageRoute = AppRoute(
     name: 'LoginPage',
     path: '/login',
