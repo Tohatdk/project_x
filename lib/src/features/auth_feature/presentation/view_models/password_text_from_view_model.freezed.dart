@@ -133,7 +133,7 @@ class _$PasswordFormViewModelImpl implements _PasswordFormViewModel {
   const _$PasswordFormViewModelImpl(
       {this.value = '',
       this.errorMessage,
-      this.isValid = true,
+      this.isValid = false,
       this.isObscured = true});
 
   @override

@@ -115,7 +115,7 @@ class __$$EmailFormViewModelImplCopyWithImpl<$Res>
 
 class _$EmailFormViewModelImpl implements _EmailFormViewModel {
   const _$EmailFormViewModelImpl(
-      {this.value = '', this.isValid = true, this.errorMessage});
+      {this.value = '', this.isValid = false, this.errorMessage});
 
   @override
   @JsonKey()
