@@ -5,9 +5,9 @@ part 'profile_entity_view_model.freezed.dart';
 @freezed
 class ProfileEntityViewModel with _$ProfileEntityViewModel {
   const factory ProfileEntityViewModel({
-    required String username,
+    String? username,
     required String email,
-    required String phoneNumber,
-    required String photoURL,
+    String? phoneNumber,
+    String? photoURL,
   }) = _ProfileEntityViewModel;
 }

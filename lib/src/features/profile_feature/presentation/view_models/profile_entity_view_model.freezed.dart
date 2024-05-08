@@ -16,10 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProfileEntityViewModel {
-  String get username => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
-  String get photoURL => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get photoURL => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileEntityViewModelCopyWith<ProfileEntityViewModel> get copyWith =>
@@ -33,7 +33,7 @@ abstract class $ProfileEntityViewModelCopyWith<$Res> {
       _$ProfileEntityViewModelCopyWithImpl<$Res, ProfileEntityViewModel>;
   @useResult
   $Res call(
-      {String username, String email, String phoneNumber, String photoURL});
+      {String? username, String email, String? phoneNumber, String? photoURL});
 }
 
 /// @nodoc
@@ -50,28 +50,28 @@ class _$ProfileEntityViewModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
+    Object? username = freezed,
     Object? email = null,
-    Object? phoneNumber = null,
-    Object? photoURL = null,
+    Object? phoneNumber = freezed,
+    Object? photoURL = freezed,
   }) {
     return _then(_value.copyWith(
-      username: null == username
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      photoURL: null == photoURL
+              as String?,
+      photoURL: freezed == photoURL
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -86,7 +86,7 @@ abstract class _$$ProfileEntityViewModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String username, String email, String phoneNumber, String photoURL});
+      {String? username, String email, String? phoneNumber, String? photoURL});
 }
 
 /// @nodoc
@@ -102,28 +102,28 @@ class __$$ProfileEntityViewModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
+    Object? username = freezed,
     Object? email = null,
-    Object? phoneNumber = null,
-    Object? photoURL = null,
+    Object? phoneNumber = freezed,
+    Object? photoURL = freezed,
   }) {
     return _then(_$ProfileEntityViewModelImpl(
-      username: null == username
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      photoURL: null == photoURL
+              as String?,
+      photoURL: freezed == photoURL
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -132,19 +132,16 @@ class __$$ProfileEntityViewModelImplCopyWithImpl<$Res>
 
 class _$ProfileEntityViewModelImpl implements _ProfileEntityViewModel {
   const _$ProfileEntityViewModelImpl(
-      {required this.username,
-      required this.email,
-      required this.phoneNumber,
-      required this.photoURL});
+      {this.username, required this.email, this.phoneNumber, this.photoURL});
 
   @override
-  final String username;
+  final String? username;
   @override
   final String email;
   @override
-  final String phoneNumber;
+  final String? phoneNumber;
   @override
-  final String photoURL;
+  final String? photoURL;
 
   @override
   String toString() {
@@ -179,19 +176,19 @@ class _$ProfileEntityViewModelImpl implements _ProfileEntityViewModel {
 
 abstract class _ProfileEntityViewModel implements ProfileEntityViewModel {
   const factory _ProfileEntityViewModel(
-      {required final String username,
+      {final String? username,
       required final String email,
-      required final String phoneNumber,
-      required final String photoURL}) = _$ProfileEntityViewModelImpl;
+      final String? phoneNumber,
+      final String? photoURL}) = _$ProfileEntityViewModelImpl;
 
   @override
-  String get username;
+  String? get username;
   @override
   String get email;
   @override
-  String get phoneNumber;
+  String? get phoneNumber;
   @override
-  String get photoURL;
+  String? get photoURL;
   @override
   @JsonKey(ignore: true)
   _$$ProfileEntityViewModelImplCopyWith<_$ProfileEntityViewModelImpl>
