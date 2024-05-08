@@ -16,7 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProfileEditPageState {
-  ProfileEntityViewModel get profileEntityViewModel =>
+  EmailEditViewModel get emailEditViewModel =>
+      throw _privateConstructorUsedError;
+  PhotoUrlEditViewModel get photoUrlEditViewModel =>
+      throw _privateConstructorUsedError;
+  UserNameEditViewModel get userNameEditViewModel =>
       throw _privateConstructorUsedError;
   ProfileEditStatus get status => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
@@ -33,11 +37,15 @@ abstract class $ProfileEditPageStateCopyWith<$Res> {
       _$ProfileEditPageStateCopyWithImpl<$Res, ProfileEditPageState>;
   @useResult
   $Res call(
-      {ProfileEntityViewModel profileEntityViewModel,
+      {EmailEditViewModel emailEditViewModel,
+      PhotoUrlEditViewModel photoUrlEditViewModel,
+      UserNameEditViewModel userNameEditViewModel,
       ProfileEditStatus status,
       String message});
 
-  $ProfileEntityViewModelCopyWith<$Res> get profileEntityViewModel;
+  $EmailEditViewModelCopyWith<$Res> get emailEditViewModel;
+  $PhotoUrlEditViewModelCopyWith<$Res> get photoUrlEditViewModel;
+  $UserNameEditViewModelCopyWith<$Res> get userNameEditViewModel;
 }
 
 /// @nodoc
@@ -54,15 +62,25 @@ class _$ProfileEditPageStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? profileEntityViewModel = null,
+    Object? emailEditViewModel = null,
+    Object? photoUrlEditViewModel = null,
+    Object? userNameEditViewModel = null,
     Object? status = null,
     Object? message = null,
   }) {
     return _then(_value.copyWith(
-      profileEntityViewModel: null == profileEntityViewModel
-          ? _value.profileEntityViewModel
-          : profileEntityViewModel // ignore: cast_nullable_to_non_nullable
-              as ProfileEntityViewModel,
+      emailEditViewModel: null == emailEditViewModel
+          ? _value.emailEditViewModel
+          : emailEditViewModel // ignore: cast_nullable_to_non_nullable
+              as EmailEditViewModel,
+      photoUrlEditViewModel: null == photoUrlEditViewModel
+          ? _value.photoUrlEditViewModel
+          : photoUrlEditViewModel // ignore: cast_nullable_to_non_nullable
+              as PhotoUrlEditViewModel,
+      userNameEditViewModel: null == userNameEditViewModel
+          ? _value.userNameEditViewModel
+          : userNameEditViewModel // ignore: cast_nullable_to_non_nullable
+              as UserNameEditViewModel,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -76,10 +94,28 @@ class _$ProfileEditPageStateCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $ProfileEntityViewModelCopyWith<$Res> get profileEntityViewModel {
-    return $ProfileEntityViewModelCopyWith<$Res>(_value.profileEntityViewModel,
+  $EmailEditViewModelCopyWith<$Res> get emailEditViewModel {
+    return $EmailEditViewModelCopyWith<$Res>(_value.emailEditViewModel,
         (value) {
-      return _then(_value.copyWith(profileEntityViewModel: value) as $Val);
+      return _then(_value.copyWith(emailEditViewModel: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PhotoUrlEditViewModelCopyWith<$Res> get photoUrlEditViewModel {
+    return $PhotoUrlEditViewModelCopyWith<$Res>(_value.photoUrlEditViewModel,
+        (value) {
+      return _then(_value.copyWith(photoUrlEditViewModel: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserNameEditViewModelCopyWith<$Res> get userNameEditViewModel {
+    return $UserNameEditViewModelCopyWith<$Res>(_value.userNameEditViewModel,
+        (value) {
+      return _then(_value.copyWith(userNameEditViewModel: value) as $Val);
     });
   }
 }
@@ -93,12 +129,18 @@ abstract class _$$ProfileEditPageStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ProfileEntityViewModel profileEntityViewModel,
+      {EmailEditViewModel emailEditViewModel,
+      PhotoUrlEditViewModel photoUrlEditViewModel,
+      UserNameEditViewModel userNameEditViewModel,
       ProfileEditStatus status,
       String message});
 
   @override
-  $ProfileEntityViewModelCopyWith<$Res> get profileEntityViewModel;
+  $EmailEditViewModelCopyWith<$Res> get emailEditViewModel;
+  @override
+  $PhotoUrlEditViewModelCopyWith<$Res> get photoUrlEditViewModel;
+  @override
+  $UserNameEditViewModelCopyWith<$Res> get userNameEditViewModel;
 }
 
 /// @nodoc
@@ -112,15 +154,25 @@ class __$$ProfileEditPageStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? profileEntityViewModel = null,
+    Object? emailEditViewModel = null,
+    Object? photoUrlEditViewModel = null,
+    Object? userNameEditViewModel = null,
     Object? status = null,
     Object? message = null,
   }) {
     return _then(_$ProfileEditPageStateImpl(
-      profileEntityViewModel: null == profileEntityViewModel
-          ? _value.profileEntityViewModel
-          : profileEntityViewModel // ignore: cast_nullable_to_non_nullable
-              as ProfileEntityViewModel,
+      emailEditViewModel: null == emailEditViewModel
+          ? _value.emailEditViewModel
+          : emailEditViewModel // ignore: cast_nullable_to_non_nullable
+              as EmailEditViewModel,
+      photoUrlEditViewModel: null == photoUrlEditViewModel
+          ? _value.photoUrlEditViewModel
+          : photoUrlEditViewModel // ignore: cast_nullable_to_non_nullable
+              as PhotoUrlEditViewModel,
+      userNameEditViewModel: null == userNameEditViewModel
+          ? _value.userNameEditViewModel
+          : userNameEditViewModel // ignore: cast_nullable_to_non_nullable
+              as UserNameEditViewModel,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -137,13 +189,20 @@ class __$$ProfileEditPageStateImplCopyWithImpl<$Res>
 
 class _$ProfileEditPageStateImpl implements _ProfileEditPageState {
   const _$ProfileEditPageStateImpl(
-      {this.profileEntityViewModel = const ProfileEntityViewModel(email: ''),
+      {required this.emailEditViewModel,
+      this.photoUrlEditViewModel = const PhotoUrlEditViewModel(),
+      this.userNameEditViewModel = const UserNameEditViewModel(),
       this.status = ProfileEditStatus.none,
       this.message = ''});
 
   @override
+  final EmailEditViewModel emailEditViewModel;
+  @override
   @JsonKey()
-  final ProfileEntityViewModel profileEntityViewModel;
+  final PhotoUrlEditViewModel photoUrlEditViewModel;
+  @override
+  @JsonKey()
+  final UserNameEditViewModel userNameEditViewModel;
   @override
   @JsonKey()
   final ProfileEditStatus status;
@@ -153,7 +212,7 @@ class _$ProfileEditPageStateImpl implements _ProfileEditPageState {
 
   @override
   String toString() {
-    return 'ProfileEditPageState(profileEntityViewModel: $profileEntityViewModel, status: $status, message: $message)';
+    return 'ProfileEditPageState(emailEditViewModel: $emailEditViewModel, photoUrlEditViewModel: $photoUrlEditViewModel, userNameEditViewModel: $userNameEditViewModel, status: $status, message: $message)';
   }
 
   @override
@@ -161,15 +220,19 @@ class _$ProfileEditPageStateImpl implements _ProfileEditPageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileEditPageStateImpl &&
-            (identical(other.profileEntityViewModel, profileEntityViewModel) ||
-                other.profileEntityViewModel == profileEntityViewModel) &&
+            (identical(other.emailEditViewModel, emailEditViewModel) ||
+                other.emailEditViewModel == emailEditViewModel) &&
+            (identical(other.photoUrlEditViewModel, photoUrlEditViewModel) ||
+                other.photoUrlEditViewModel == photoUrlEditViewModel) &&
+            (identical(other.userNameEditViewModel, userNameEditViewModel) ||
+                other.userNameEditViewModel == userNameEditViewModel) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, profileEntityViewModel, status, message);
+  int get hashCode => Object.hash(runtimeType, emailEditViewModel,
+      photoUrlEditViewModel, userNameEditViewModel, status, message);
 
   @JsonKey(ignore: true)
   @override
@@ -182,12 +245,18 @@ class _$ProfileEditPageStateImpl implements _ProfileEditPageState {
 
 abstract class _ProfileEditPageState implements ProfileEditPageState {
   const factory _ProfileEditPageState(
-      {final ProfileEntityViewModel profileEntityViewModel,
+      {required final EmailEditViewModel emailEditViewModel,
+      final PhotoUrlEditViewModel photoUrlEditViewModel,
+      final UserNameEditViewModel userNameEditViewModel,
       final ProfileEditStatus status,
       final String message}) = _$ProfileEditPageStateImpl;
 
   @override
-  ProfileEntityViewModel get profileEntityViewModel;
+  EmailEditViewModel get emailEditViewModel;
+  @override
+  PhotoUrlEditViewModel get photoUrlEditViewModel;
+  @override
+  UserNameEditViewModel get userNameEditViewModel;
   @override
   ProfileEditStatus get status;
   @override

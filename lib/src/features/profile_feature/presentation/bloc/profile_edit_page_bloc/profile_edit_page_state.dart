@@ -5,8 +5,12 @@ enum ProfileEditStatus { none, loading, failure, succeed }
 @freezed
 class ProfileEditPageState with _$ProfileEditPageState {
   const factory ProfileEditPageState({
-    @Default(ProfileEntityViewModel(email: '')) ProfileEntityViewModel profileEntityViewModel,
+    required EmailEditViewModel emailEditViewModel,
+    @Default(PhotoUrlEditViewModel())
+    PhotoUrlEditViewModel photoUrlEditViewModel,
+    @Default(UserNameEditViewModel())
+    UserNameEditViewModel userNameEditViewModel,
     @Default(ProfileEditStatus.none) ProfileEditStatus status,
     @Default('') String message,
-  })=_ProfileEditPageState;
+  }) = _ProfileEditPageState;
 }

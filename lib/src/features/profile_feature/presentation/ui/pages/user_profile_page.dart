@@ -88,8 +88,11 @@ class UserProfilePage extends StatelessWidget {
             title: Text('Edit'),
           ),
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const ProfileEditPage()));
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const ProfileEditPage(),
+              ),
+            );
           },
         ),
         PopupMenuItem(
