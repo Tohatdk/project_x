@@ -114,9 +114,13 @@ class ProfileEditPageBloc
         emit(state.copyWith(userNameEditViewModel: newUserName));
         await _updateUsernameUseCase.call(username: event.userName);
       } else {
-        emit(state.copyWith(
+        emit(
+          state.copyWith(
             userNameEditViewModel: vm.copyWith(
-                errorMessage: 'Имя должно содержать минимум 3 буквы')));
+              errorMessage: 'Имя должно содержать минимум 3 буквы',
+            ),
+          ),
+        );
       }
     } catch (e) {
       emit(
