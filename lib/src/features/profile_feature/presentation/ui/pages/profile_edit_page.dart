@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_x/src/features/profile_feature/presentation/bloc/profile_edit_page_bloc/profile_edit_page_bloc.dart';
 
 class ProfileEditPage extends StatefulWidget {
   const ProfileEditPage({super.key});
@@ -12,6 +14,23 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   final TextEditingController _emailController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _emailController.addListener(() {
+        context
+            .read<ProfileEditPageBloc>()
+            .add(UpdateEmailEvent(email: _emailController.text));
+      });
+      _nameController.addListener(() {
+        context.read<ProfileEditPageBloc>().add(
+              UpdateUserNameEvent(_nameController.text),
+            );
+      });
+    });
+  }
+
+  @override
   void dispose() {
     _nameController.dispose();
     _emailController.dispose();
@@ -20,6 +39,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<ProfileEditPageBloc>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Edit profile'),
@@ -35,7 +55,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                   controller: _nameController,
                   decoration: const InputDecoration(
                     labelText: 'Name',
-                    hintText: 'Enter your name',
+                    hintText: 'Введите имя',
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -43,21 +63,13 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                   controller: _emailController,
                   decoration: const InputDecoration(
                     labelText: 'Email',
-                    hintText: 'Enter your email',
+                    hintText: 'Введите email',
                   ),
                 ),
                 const SizedBox(height: 50),
                 ElevatedButton(
                   onPressed: () {},
-                  child: const Text('Save'),
-                ),
-                const SizedBox(height: 10),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Delete account',
-                    style: TextStyle(color: Colors.red),
-                  ),
+                  child: const Text('Сохранить'),
                 ),
               ],
             ),
