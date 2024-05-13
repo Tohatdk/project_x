@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "1004062037286",
-    "project_id": "projectxtdk",
-    "storage_bucket": "projectxtdk.appspot.com"
+    "project_number": "11200755384",
+    "project_id": "projectx-1fc9d",
+    "storage_bucket": "projectx-1fc9d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1004062037286:android:b51b43dd0fdbb8ab639de7",
+        "mobilesdk_app_id": "1:11200755384:android:a075461c65f39df0de664d",
         "android_client_info": {
           "package_name": "kz.tohatdk.project_x"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBPit96mrvf9WjI9CrRRUhPfc7SOOBTJAI"
+          "current_key": "AIzaSyDop4iQWP3Ao7pKGY1A_54AYRpGAp0xREc"
         }
       ],
       "services": {

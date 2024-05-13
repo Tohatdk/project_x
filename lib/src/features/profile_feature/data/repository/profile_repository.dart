@@ -1,3 +1,5 @@
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:project_x/src/features/profile_feature/data/data_source/profile_data_source.dart';
 import 'package:project_x/src/features/profile_feature/domain/entities/profile_entity.dart';
 import 'package:project_x/src/features/profile_feature/domain/repository/profile_repository.dart';
@@ -23,12 +25,12 @@ class ProfileRepositoryImpl implements ProfileRepository {
   }
 
   @override
-  Future<void> updatePhoto({required String photoUrl}) async {
-    await _profileDataSource.updatePhoto(photoUrl: photoUrl);
+  Future<void> updateUsername({required String username}) async {
+    await _profileDataSource.updateUsername(username: username);
   }
 
   @override
-  Future<void> updateUsername({required String username}) async {
-    await _profileDataSource.updateUsername(username: username);
+  Future<UploadTask> uploadPhoto(XFile file) async {
+    return _profileDataSource.uploadPhoto(file);
   }
 }

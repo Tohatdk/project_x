@@ -1,83 +1,77 @@
+import 'dart:io' as io;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:project_x/core/network/error.dart';
 import 'package:project_x/src/features/profile_feature/domain/entities/profile_entity.dart';
 
 class ProfileDataSource {
+  static const String _storagePath = 'https://firebasestorage.googleapis.com/v0/b/projectx-1fc9d.appspot.com/o/';
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<ProfileEntity> getProfileData() async {
-    try {
-      final String userId = _firebaseAuth.currentUser!.uid;
-      final DocumentSnapshot<Map<String, dynamic>> profileDoc =
-          await _firestore.collection('users').doc(userId).get();
-
-      if (profileDoc.exists) {
-        final Map<String, dynamic> data = profileDoc.data()!;
-        final String username = data['username'] as String;
-        final String email = data['email'] as String;
-        final String photoUrl = data['photoURL'] as String;
-
-        return ProfileEntity(
-          username: username,
-          email: email,
-          photoUrl: photoUrl,
-          phoneNumber: '',
-        );
-      } else {
-        throw Exception('Profile data not found');
-      }
-    } catch (e) {
-      throw Exception('Failed to get profile data: $e');
+    final user = _firebaseAuth.currentUser;
+    if (user == null) {
+      throw const UnauthorizedError(message: 'Вы не авторизованы!');
     }
+    return ProfileEntity(
+      username: user.displayName,
+      email: user.email,
+      photoUrl: user.photoURL,
+      phoneNumber: user.phoneNumber,
+    );
   }
 
   Future<void> updateEmail({
     required String email,
   }) async {
-    try {
-      final String userId = _firebaseAuth.currentUser!.uid;
-      await _firestore.collection('users').doc(userId).update({'email': email});
-    } catch (e) {
-      throw Exception('Failed to update email: $e');
-    }
+    final user = _firebaseAuth.currentUser;
+    await user?.verifyBeforeUpdateEmail(email);
   }
 
-  Future<void> updatePhoto({
-    required String photoUrl,
-  }) async {
-    try {
-      final String userId = _firebaseAuth.currentUser!.uid;
-      await _firestore
-          .collection('users')
-          .doc(userId)
-          .update({'photoURL': photoUrl});
-    } catch (e) {
-      throw Exception('Failed to update photo URL: $e');
+  Future<UploadTask> uploadPhoto(XFile file) async {
+    final user = _firebaseAuth.currentUser;
+    if(user == null){
+      throw const UnauthorizedError(message: 'Вы не авторизованы');
     }
+    UploadTask uploadTask;
+    final Reference ref = FirebaseStorage.instance
+        .ref()
+        .child('profile_avatars')
+        .child(user.uid)
+        .child('/avatar.jpg');
+
+    final metadata = SettableMetadata(
+      contentType: 'image/jpeg',
+      customMetadata: {'picked-file-path': file.path},
+    );
+
+    if (kIsWeb) {
+      uploadTask = ref.putData(await file.readAsBytes(), metadata);
+    } else {
+      uploadTask = ref.putFile(io.File(file.path), metadata);
+    }
+
+
+    _updateProfilePhoto(await ref.getDownloadURL());
+    return uploadTask;
+  }
+
+  Future<void> _updateProfilePhoto(String photoURL) async {
+    await FirebaseAuth.instance.currentUser?.updatePhotoURL(photoURL);
   }
 
   Future<void> updateUsername({
     required String username,
   }) async {
-    try {
-      final String userId = _firebaseAuth.currentUser!.uid;
-      await _firestore
-          .collection('users')
-          .doc(userId)
-          .update({'username': username});
-    } catch (e) {
-      throw Exception('Failed to update username: $e');
-    }
+    final user = _firebaseAuth.currentUser;
+    await user?.updateDisplayName(username);
   }
 
   Future<void> deleteAccount() async {
-    try {
-      final String userId = _firebaseAuth.currentUser!.uid;
-      await _firestore.collection('users').doc(userId).delete();
-      await _firebaseAuth.currentUser!.delete();
-    } catch (e) {
-      throw Exception('Failed to delete account: $e');
-    }
+    final user = _firebaseAuth.currentUser;
+    await user?.delete();
   }
 }

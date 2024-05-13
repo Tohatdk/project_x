@@ -16,6 +16,7 @@ import 'package:project_x/src/features/auth_feature/presentation/ui/screens/forg
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/login_page.dart';
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/register_page.dart';
 import 'package:project_x/src/features/home_feature/home_page.dart';
+import 'package:project_x/src/features/profile_feature/domain/usecase/upload_photo_usecase.dart';
 import 'package:project_x/src/features/profile_feature/presentation/bloc/user_profile_page_bloc/profile_page_bloc.dart';
 import 'package:project_x/src/features/profile_feature/presentation/ui/pages/user_profile_page.dart';
 
@@ -81,6 +82,7 @@ abstract class AppRouteConfig {
             builder: (context, state) => BlocProvider(
               create: (_) => ProfilePageBloc(
                 logoutUseCase: getIt.get<LogoutUseCase>(),
+                uploadPhotoUseCase: getIt.get<UploadPhotoUseCase>(),
               ),
               child: const UserProfilePage(),
             ),

@@ -1,5 +1,7 @@
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:project_x/firebase_options.dart';
 import 'package:project_x/services/firebase_messaging/local_notifications.dart';
 
@@ -30,6 +32,22 @@ class FirebaseNotificationService {
         );
       }
     });
+    await appCheck();
+  }
+
+  Future<void> appCheck()async{
+    if(!kDebugMode) {
+      await FirebaseAppCheck.instance.activate(
+        appleProvider: AppleProvider.appAttest,
+        webProvider: ReCaptchaV3Provider('recaptcha-v3-site-key'),
+      );
+    } else {
+      await FirebaseAppCheck.instance.activate(
+        androidProvider: AndroidProvider.debug,
+        appleProvider: AppleProvider.debug,
+      );
+    }
+
   }
 
   Future<void> _requestNotificationPermission() async {
