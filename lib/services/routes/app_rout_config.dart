@@ -16,8 +16,13 @@ import 'package:project_x/src/features/auth_feature/presentation/ui/screens/forg
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/login_page.dart';
 import 'package:project_x/src/features/auth_feature/presentation/ui/screens/register_page.dart';
 import 'package:project_x/src/features/home_feature/home_page.dart';
+import 'package:project_x/src/features/profile_feature/domain/usecase/update_email_usecase.dart';
+import 'package:project_x/src/features/profile_feature/domain/usecase/update_username_usecase.dart';
+import 'package:project_x/src/features/profile_feature/presentation/bloc/bloc_args.dart';
+import 'package:project_x/src/features/profile_feature/presentation/bloc/profile_edit_page_bloc/profile_edit_page_bloc.dart';
 import 'package:project_x/src/features/profile_feature/domain/usecase/upload_photo_usecase.dart';
 import 'package:project_x/src/features/profile_feature/presentation/bloc/user_profile_page_bloc/profile_page_bloc.dart';
+import 'package:project_x/src/features/profile_feature/presentation/ui/pages/profile_edit_page.dart';
 import 'package:project_x/src/features/profile_feature/presentation/ui/pages/user_profile_page.dart';
 
 final rootNaveKey = GlobalKey<NavigatorState>(debugLabel: 'rooNav');
@@ -86,6 +91,26 @@ abstract class AppRouteConfig {
               ),
               child: const UserProfilePage(),
             ),
+            routes: [
+              GoRoute(
+                path: AppRoutePaths.profileEditPageRoute.fullPath,
+                builder: (context, state) => BlocProvider(
+                  create: (_) => ProfileEditPageBloc(
+                    updateEmailUseCase: getIt.get<UpdateEmailUseCase>(),
+                    updateUsernameUseCase: getIt.get<UpdateUsernameUseCase>(),
+                    updatePhotoUrlUseCase: getIt.get<UpdatePhotoUrlUseCase>(),
+                    args: getIt.get<ProfileBlocsCommunicationsArgs>(),
+                  ),
+                  child: ProfileEditPage(
+                    args: ProfileBlocsCommunicationsArgs(
+                      email: 'tohatdk@gmail.com',
+                      username: '',
+                      photoUrl: '',
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
