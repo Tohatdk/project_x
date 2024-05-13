@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PhotoUrlEditViewModel {
-  String? get photoUrl => throw _privateConstructorUsedError;
+  String? get value => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,7 @@ abstract class $PhotoUrlEditViewModelCopyWith<$Res> {
           $Res Function(PhotoUrlEditViewModel) then) =
       _$PhotoUrlEditViewModelCopyWithImpl<$Res, PhotoUrlEditViewModel>;
   @useResult
-  $Res call({String? photoUrl, String? errorMessage});
+  $Res call({String? value, String? errorMessage});
 }
 
 /// @nodoc
@@ -47,13 +47,13 @@ class _$PhotoUrlEditViewModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? photoUrl = freezed,
+    Object? value = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      photoUrl: freezed == photoUrl
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
+      value: freezed == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as String?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
@@ -72,7 +72,7 @@ abstract class _$$PhotoUrlEditViewModelImplCopyWith<$Res>
       __$$PhotoUrlEditViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? photoUrl, String? errorMessage});
+  $Res call({String? value, String? errorMessage});
 }
 
 /// @nodoc
@@ -87,13 +87,13 @@ class __$$PhotoUrlEditViewModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? photoUrl = freezed,
+    Object? value = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_$PhotoUrlEditViewModelImpl(
-      photoUrl: freezed == photoUrl
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
+      value: freezed == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as String?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
@@ -106,16 +106,16 @@ class __$$PhotoUrlEditViewModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PhotoUrlEditViewModelImpl implements _PhotoUrlEditViewModel {
-  const _$PhotoUrlEditViewModelImpl({this.photoUrl, this.errorMessage});
+  const _$PhotoUrlEditViewModelImpl({this.value, this.errorMessage});
 
   @override
-  final String? photoUrl;
+  final String? value;
   @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'PhotoUrlEditViewModel(photoUrl: $photoUrl, errorMessage: $errorMessage)';
+    return 'PhotoUrlEditViewModel(value: $value, errorMessage: $errorMessage)';
   }
 
   @override
@@ -123,14 +123,13 @@ class _$PhotoUrlEditViewModelImpl implements _PhotoUrlEditViewModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PhotoUrlEditViewModelImpl &&
-            (identical(other.photoUrl, photoUrl) ||
-                other.photoUrl == photoUrl) &&
+            (identical(other.value, value) || other.value == value) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, photoUrl, errorMessage);
+  int get hashCode => Object.hash(runtimeType, value, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -142,11 +141,11 @@ class _$PhotoUrlEditViewModelImpl implements _PhotoUrlEditViewModel {
 
 abstract class _PhotoUrlEditViewModel implements PhotoUrlEditViewModel {
   const factory _PhotoUrlEditViewModel(
-      {final String? photoUrl,
+      {final String? value,
       final String? errorMessage}) = _$PhotoUrlEditViewModelImpl;
 
   @override
-  String? get photoUrl;
+  String? get value;
   @override
   String? get errorMessage;
   @override

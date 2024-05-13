@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
+import 'package:project_x/src/features/profile_feature/presentation/bloc/bloc_args.dart';
 import 'package:project_x/src/features/profile_feature/presentation/ui/pages/profile_edit_page.dart';
 
 Future<void> main() async {
@@ -7,7 +8,9 @@ Future<void> main() async {
       (tester) async {
     final builder = DeviceBuilder()
       ..addScenario(
-        widget: const ProfileEditPage(),
+        widget: ProfileEditPage(
+          args: ProfileBlocsCommunicationsArgs(email: ''),
+        ),
         name: 'ProfileEditScreen',
       );
 
@@ -28,7 +31,9 @@ Future<void> main() async {
         ],
       )
       ..addScenario(
-        widget: const ProfileEditPage(),
+        widget: ProfileEditPage(
+          args: ProfileBlocsCommunicationsArgs(email: ''),
+        ),
         name: 'default profile edit page',
       );
 

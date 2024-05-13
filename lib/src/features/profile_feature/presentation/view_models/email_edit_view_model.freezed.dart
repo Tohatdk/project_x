@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EmailEditViewModel {
-  String get email => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
 
@@ -31,7 +31,7 @@ abstract class $EmailEditViewModelCopyWith<$Res> {
           EmailEditViewModel value, $Res Function(EmailEditViewModel) then) =
       _$EmailEditViewModelCopyWithImpl<$Res, EmailEditViewModel>;
   @useResult
-  $Res call({String email, String? errorMessage, bool isValid});
+  $Res call({String value, String? errorMessage, bool isValid});
 }
 
 /// @nodoc
@@ -47,14 +47,14 @@ class _$EmailEditViewModelCopyWithImpl<$Res, $Val extends EmailEditViewModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? value = null,
     Object? errorMessage = freezed,
     Object? isValid = null,
   }) {
     return _then(_value.copyWith(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as String,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
@@ -76,7 +76,7 @@ abstract class _$$EmailEditViewModelImplCopyWith<$Res>
       __$$EmailEditViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String? errorMessage, bool isValid});
+  $Res call({String value, String? errorMessage, bool isValid});
 }
 
 /// @nodoc
@@ -90,14 +90,14 @@ class __$$EmailEditViewModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? value = null,
     Object? errorMessage = freezed,
     Object? isValid = null,
   }) {
     return _then(_$EmailEditViewModelImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as String,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
@@ -115,10 +115,10 @@ class __$$EmailEditViewModelImplCopyWithImpl<$Res>
 
 class _$EmailEditViewModelImpl implements _EmailEditViewModel {
   const _$EmailEditViewModelImpl(
-      {required this.email, this.errorMessage, this.isValid = false});
+      {required this.value, this.errorMessage, this.isValid = false});
 
   @override
-  final String email;
+  final String value;
   @override
   final String? errorMessage;
   @override
@@ -127,7 +127,7 @@ class _$EmailEditViewModelImpl implements _EmailEditViewModel {
 
   @override
   String toString() {
-    return 'EmailEditViewModel(email: $email, errorMessage: $errorMessage, isValid: $isValid)';
+    return 'EmailEditViewModel(value: $value, errorMessage: $errorMessage, isValid: $isValid)';
   }
 
   @override
@@ -135,14 +135,14 @@ class _$EmailEditViewModelImpl implements _EmailEditViewModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EmailEditViewModelImpl &&
-            (identical(other.email, email) || other.email == email) &&
+            (identical(other.value, value) || other.value == value) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.isValid, isValid) || other.isValid == isValid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, errorMessage, isValid);
+  int get hashCode => Object.hash(runtimeType, value, errorMessage, isValid);
 
   @JsonKey(ignore: true)
   @override
@@ -154,12 +154,12 @@ class _$EmailEditViewModelImpl implements _EmailEditViewModel {
 
 abstract class _EmailEditViewModel implements EmailEditViewModel {
   const factory _EmailEditViewModel(
-      {required final String email,
+      {required final String value,
       final String? errorMessage,
       final bool isValid}) = _$EmailEditViewModelImpl;
 
   @override
-  String get email;
+  String get value;
   @override
   String? get errorMessage;
   @override

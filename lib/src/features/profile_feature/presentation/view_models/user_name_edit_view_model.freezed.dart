@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserNameEditViewModel {
-  String? get userName => throw _privateConstructorUsedError;
+  String? get value => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,7 @@ abstract class $UserNameEditViewModelCopyWith<$Res> {
           $Res Function(UserNameEditViewModel) then) =
       _$UserNameEditViewModelCopyWithImpl<$Res, UserNameEditViewModel>;
   @useResult
-  $Res call({String? userName, String? errorMessage});
+  $Res call({String? value, String? errorMessage});
 }
 
 /// @nodoc
@@ -47,13 +47,13 @@ class _$UserNameEditViewModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userName = freezed,
+    Object? value = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      userName: freezed == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      value: freezed == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as String?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
@@ -72,7 +72,7 @@ abstract class _$$UserNameEditViewModelImplCopyWith<$Res>
       __$$UserNameEditViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? userName, String? errorMessage});
+  $Res call({String? value, String? errorMessage});
 }
 
 /// @nodoc
@@ -87,13 +87,13 @@ class __$$UserNameEditViewModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userName = freezed,
+    Object? value = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_$UserNameEditViewModelImpl(
-      userName: freezed == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      value: freezed == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as String?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
@@ -106,16 +106,16 @@ class __$$UserNameEditViewModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserNameEditViewModelImpl implements _UserNameEditViewModel {
-  const _$UserNameEditViewModelImpl({this.userName, this.errorMessage});
+  const _$UserNameEditViewModelImpl({this.value, this.errorMessage});
 
   @override
-  final String? userName;
+  final String? value;
   @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'UserNameEditViewModel(userName: $userName, errorMessage: $errorMessage)';
+    return 'UserNameEditViewModel(value: $value, errorMessage: $errorMessage)';
   }
 
   @override
@@ -123,14 +123,13 @@ class _$UserNameEditViewModelImpl implements _UserNameEditViewModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserNameEditViewModelImpl &&
-            (identical(other.userName, userName) ||
-                other.userName == userName) &&
+            (identical(other.value, value) || other.value == value) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userName, errorMessage);
+  int get hashCode => Object.hash(runtimeType, value, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -142,11 +141,11 @@ class _$UserNameEditViewModelImpl implements _UserNameEditViewModel {
 
 abstract class _UserNameEditViewModel implements UserNameEditViewModel {
   const factory _UserNameEditViewModel(
-      {final String? userName,
+      {final String? value,
       final String? errorMessage}) = _$UserNameEditViewModelImpl;
 
   @override
-  String? get userName;
+  String? get value;
   @override
   String? get errorMessage;
   @override

@@ -21,13 +21,15 @@ class ProfileEditPageBloc
     required UpdateEmailUseCase updateEmailUseCase,
     required UpdateUsernameUseCase updateUsernameUseCase,
     required UpdatePhotoUrlUseCase updatePhotoUrlUseCase,
-    required ProfileEditPageBlocArgs editPageBlocArgs,
+    required ProfileBlocsCommunicationsArgs args,
   })  : _updateEmailUseCase = updateEmailUseCase,
         _updateUsernameUseCase = updateUsernameUseCase,
         _updatePhotoUrlUseCase = updatePhotoUrlUseCase,
         super(
           ProfileEditPageState(
-            emailEditViewModel: editPageBlocArgs.emailEditViewModel,
+            emailEditViewModel: EmailEditViewModel(value: args.email),
+            photoUrlEditViewModel: PhotoUrlEditViewModel(value: args.photoUrl),
+            userNameEditViewModel: UserNameEditViewModel(value: args.username),
           ),
         ) {
     on<UpdateEmailEvent>(
@@ -51,7 +53,7 @@ class ProfileEditPageBloc
   ) async {
     try {
       final photoUrlViewModel = state.photoUrlEditViewModel.copyWith(
-        photoUrl: event.photoUrl,
+        value: event.photoUrl,
       );
       emit(state.copyWith(photoUrlEditViewModel: photoUrlViewModel));
       await _updatePhotoUrlUseCase.call(photoUrl: event.photoUrl);
@@ -80,7 +82,7 @@ class ProfileEditPageBloc
       }
 
       final newEmail = state.emailEditViewModel.copyWith(
-        email: event.email,
+        value: event.email,
         isValid: isValidEmail,
         errorMessage: emailTextFieldError,
       );
@@ -110,7 +112,7 @@ class ProfileEditPageBloc
     try {
       if (event.userName.length >= 3) {
         final newUserName =
-            vm.copyWith(userName: event.userName, errorMessage: null);
+            vm.copyWith(value: event.userName, errorMessage: null);
         emit(state.copyWith(userNameEditViewModel: newUserName));
         await _updateUsernameUseCase.call(username: event.userName);
       } else {
