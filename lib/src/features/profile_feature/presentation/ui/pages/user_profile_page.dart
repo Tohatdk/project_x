@@ -105,6 +105,7 @@ class UserProfilePage extends StatelessWidget {
 
 class _ProfileAvatar extends StatelessWidget {
   final String imageUrl;
+
   const _ProfileAvatar({required this.imageUrl});
 
   @override

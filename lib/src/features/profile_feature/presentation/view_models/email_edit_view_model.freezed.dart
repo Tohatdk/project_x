@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'password_text_from_view_model.dart';
+part of 'email_edit_view_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,32 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$PasswordFormViewModel {
+mixin _$EmailEditViewModel {
   String get value => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
-  bool get isObscured => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PasswordFormViewModelCopyWith<PasswordFormViewModel> get copyWith =>
+  $EmailEditViewModelCopyWith<EmailEditViewModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PasswordFormViewModelCopyWith<$Res> {
-  factory $PasswordFormViewModelCopyWith(PasswordFormViewModel value,
-          $Res Function(PasswordFormViewModel) then) =
-      _$PasswordFormViewModelCopyWithImpl<$Res, PasswordFormViewModel>;
+abstract class $EmailEditViewModelCopyWith<$Res> {
+  factory $EmailEditViewModelCopyWith(
+          EmailEditViewModel value, $Res Function(EmailEditViewModel) then) =
+      _$EmailEditViewModelCopyWithImpl<$Res, EmailEditViewModel>;
   @useResult
-  $Res call(
-      {String value, String? errorMessage, bool isValid, bool isObscured});
+  $Res call({String value, String? errorMessage, bool isValid});
 }
 
 /// @nodoc
-class _$PasswordFormViewModelCopyWithImpl<$Res,
-        $Val extends PasswordFormViewModel>
-    implements $PasswordFormViewModelCopyWith<$Res> {
-  _$PasswordFormViewModelCopyWithImpl(this._value, this._then);
+class _$EmailEditViewModelCopyWithImpl<$Res, $Val extends EmailEditViewModel>
+    implements $EmailEditViewModelCopyWith<$Res> {
+  _$EmailEditViewModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -53,7 +50,6 @@ class _$PasswordFormViewModelCopyWithImpl<$Res,
     Object? value = null,
     Object? errorMessage = freezed,
     Object? isValid = null,
-    Object? isObscured = null,
   }) {
     return _then(_value.copyWith(
       value: null == value
@@ -68,34 +64,27 @@ class _$PasswordFormViewModelCopyWithImpl<$Res,
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
               as bool,
-      isObscured: null == isObscured
-          ? _value.isObscured
-          : isObscured // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$PasswordFormViewModelImplCopyWith<$Res>
-    implements $PasswordFormViewModelCopyWith<$Res> {
-  factory _$$PasswordFormViewModelImplCopyWith(
-          _$PasswordFormViewModelImpl value,
-          $Res Function(_$PasswordFormViewModelImpl) then) =
-      __$$PasswordFormViewModelImplCopyWithImpl<$Res>;
+abstract class _$$EmailEditViewModelImplCopyWith<$Res>
+    implements $EmailEditViewModelCopyWith<$Res> {
+  factory _$$EmailEditViewModelImplCopyWith(_$EmailEditViewModelImpl value,
+          $Res Function(_$EmailEditViewModelImpl) then) =
+      __$$EmailEditViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String value, String? errorMessage, bool isValid, bool isObscured});
+  $Res call({String value, String? errorMessage, bool isValid});
 }
 
 /// @nodoc
-class __$$PasswordFormViewModelImplCopyWithImpl<$Res>
-    extends _$PasswordFormViewModelCopyWithImpl<$Res,
-        _$PasswordFormViewModelImpl>
-    implements _$$PasswordFormViewModelImplCopyWith<$Res> {
-  __$$PasswordFormViewModelImplCopyWithImpl(_$PasswordFormViewModelImpl _value,
-      $Res Function(_$PasswordFormViewModelImpl) _then)
+class __$$EmailEditViewModelImplCopyWithImpl<$Res>
+    extends _$EmailEditViewModelCopyWithImpl<$Res, _$EmailEditViewModelImpl>
+    implements _$$EmailEditViewModelImplCopyWith<$Res> {
+  __$$EmailEditViewModelImplCopyWithImpl(_$EmailEditViewModelImpl _value,
+      $Res Function(_$EmailEditViewModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,9 +93,8 @@ class __$$PasswordFormViewModelImplCopyWithImpl<$Res>
     Object? value = null,
     Object? errorMessage = freezed,
     Object? isValid = null,
-    Object? isObscured = null,
   }) {
-    return _then(_$PasswordFormViewModelImpl(
+    return _then(_$EmailEditViewModelImpl(
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -119,71 +107,56 @@ class __$$PasswordFormViewModelImplCopyWithImpl<$Res>
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
               as bool,
-      isObscured: null == isObscured
-          ? _value.isObscured
-          : isObscured // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$PasswordFormViewModelImpl implements _PasswordFormViewModel {
-  const _$PasswordFormViewModelImpl(
-      {this.value = '',
-      this.errorMessage,
-      this.isValid = false,
-      this.isObscured = true});
+class _$EmailEditViewModelImpl implements _EmailEditViewModel {
+  const _$EmailEditViewModelImpl(
+      {required this.value, this.errorMessage, this.isValid = false});
 
   @override
-  @JsonKey()
   final String value;
   @override
   final String? errorMessage;
   @override
   @JsonKey()
   final bool isValid;
-  @override
-  @JsonKey()
-  final bool isObscured;
 
   @override
   String toString() {
-    return 'PasswordFormViewModel(value: $value, errorMessage: $errorMessage, isValid: $isValid, isObscured: $isObscured)';
+    return 'EmailEditViewModel(value: $value, errorMessage: $errorMessage, isValid: $isValid)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PasswordFormViewModelImpl &&
+            other is _$EmailEditViewModelImpl &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
-            (identical(other.isValid, isValid) || other.isValid == isValid) &&
-            (identical(other.isObscured, isObscured) ||
-                other.isObscured == isObscured));
+            (identical(other.isValid, isValid) || other.isValid == isValid));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, value, errorMessage, isValid, isObscured);
+  int get hashCode => Object.hash(runtimeType, value, errorMessage, isValid);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PasswordFormViewModelImplCopyWith<_$PasswordFormViewModelImpl>
-      get copyWith => __$$PasswordFormViewModelImplCopyWithImpl<
-          _$PasswordFormViewModelImpl>(this, _$identity);
+  _$$EmailEditViewModelImplCopyWith<_$EmailEditViewModelImpl> get copyWith =>
+      __$$EmailEditViewModelImplCopyWithImpl<_$EmailEditViewModelImpl>(
+          this, _$identity);
 }
 
-abstract class _PasswordFormViewModel implements PasswordFormViewModel {
-  const factory _PasswordFormViewModel(
-      {final String value,
+abstract class _EmailEditViewModel implements EmailEditViewModel {
+  const factory _EmailEditViewModel(
+      {required final String value,
       final String? errorMessage,
-      final bool isValid,
-      final bool isObscured}) = _$PasswordFormViewModelImpl;
+      final bool isValid}) = _$EmailEditViewModelImpl;
 
   @override
   String get value;
@@ -192,9 +165,7 @@ abstract class _PasswordFormViewModel implements PasswordFormViewModel {
   @override
   bool get isValid;
   @override
-  bool get isObscured;
-  @override
   @JsonKey(ignore: true)
-  _$$PasswordFormViewModelImplCopyWith<_$PasswordFormViewModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$EmailEditViewModelImplCopyWith<_$EmailEditViewModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
