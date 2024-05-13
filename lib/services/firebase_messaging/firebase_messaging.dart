@@ -35,8 +35,8 @@ class FirebaseNotificationService {
     await appCheck();
   }
 
-  Future<void> appCheck()async{
-    if(!kDebugMode) {
+  Future<void> appCheck() async {
+    if (!kDebugMode) {
       await FirebaseAppCheck.instance.activate(
         appleProvider: AppleProvider.appAttest,
         webProvider: ReCaptchaV3Provider('recaptcha-v3-site-key'),
@@ -47,7 +47,6 @@ class FirebaseNotificationService {
         appleProvider: AppleProvider.debug,
       );
     }
-
   }
 
   Future<void> _requestNotificationPermission() async {

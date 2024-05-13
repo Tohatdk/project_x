@@ -5,8 +5,7 @@ abstract class ProfilePageEvent {}
 class SignoutEvent extends ProfilePageEvent {}
 
 class UploadPhotoEvent extends ProfilePageEvent {
-   final ImageSource value;
+  final ImageSource value;
 
   UploadPhotoEvent(this.value);
-
 }
