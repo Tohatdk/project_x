@@ -1,5 +1,4 @@
 import 'dart:io' as io;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
@@ -8,7 +7,6 @@ import 'package:project_x/core/network/error.dart';
 import 'package:project_x/src/features/profile_feature/domain/entities/profile_entity.dart';
 
 class ProfileDataSource {
-  static const String _storagePath = 'https://firebasestorage.googleapis.com/v0/b/projectx-1fc9d.appspot.com/o/';
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<ProfileEntity> getProfileData() async {
@@ -33,7 +31,7 @@ class ProfileDataSource {
 
   Future<UploadTask> uploadPhoto(XFile file) async {
     final user = _firebaseAuth.currentUser;
-    if(user == null){
+    if (user == null) {
       throw const UnauthorizedError(message: 'Вы не авторизованы');
     }
     UploadTask uploadTask;
@@ -53,7 +51,6 @@ class ProfileDataSource {
     } else {
       uploadTask = ref.putFile(io.File(file.path), metadata);
     }
-
 
     _updateProfilePhoto(await ref.getDownloadURL());
     return uploadTask;

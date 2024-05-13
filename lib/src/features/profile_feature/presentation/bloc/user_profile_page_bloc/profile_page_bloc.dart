@@ -12,8 +12,7 @@ class ProfilePageBloc extends Bloc<ProfilePageEvent, ProfilePageState> {
   ProfilePageBloc({
     required LogoutUseCase logoutUseCase,
     required UploadPhotoUseCase uploadPhotoUseCase,
-  })
-      : _logoutUseCase = logoutUseCase,
+  })  : _logoutUseCase = logoutUseCase,
         _uploadPhotoUseCase = uploadPhotoUseCase,
         super(ProfilePageState('')) {
     on<SignoutEvent>(_logout);
@@ -23,27 +22,30 @@ class ProfilePageBloc extends Bloc<ProfilePageEvent, ProfilePageState> {
   final LogoutUseCase _logoutUseCase;
   final UploadPhotoUseCase _uploadPhotoUseCase;
 
-  Future<void> _logout(SignoutEvent event,
-      Emitter<ProfilePageState> emit,) async {
+  Future<void> _logout(
+    SignoutEvent event,
+    Emitter<ProfilePageState> emit,
+  ) async {
     await _logoutUseCase.signOut();
     emit(ProfilePageState(state.loggedOut));
   }
 
-  Future<void> _uploadPhoto(UploadPhotoEvent event,
-      Emitter<ProfilePageState> emit,) async {
+  Future<void> _uploadPhoto(
+    UploadPhotoEvent event,
+    Emitter<ProfilePageState> emit,
+  ) async {
     final Stopwatch stopwatch = Stopwatch();
-    print('************************');
-    print('starting stopwatch');
-    print('************************');
+
     stopwatch.start();
     final ImagePicker picker = ImagePicker();
     int quality = 100;
 
-    if(event.value == ImageSource.camera){
+    if (event.value == ImageSource.camera) {
       quality = 20;
     }
 
-    final pickedFile = await picker.pickImage(source:event.value, imageQuality: quality);
+    final pickedFile =
+        await picker.pickImage(source: event.value, imageQuality: quality);
 
     if (pickedFile == null) {
       //TODO: handle o image picked
@@ -52,21 +54,16 @@ class ProfilePageBloc extends Bloc<ProfilePageEvent, ProfilePageState> {
 
     final uploadTask = await _uploadPhotoUseCase.execute(pickedFile);
 
-
     uploadTask.snapshotEvents.listen((event) {
-      switch (event.state){
+      switch (event.state) {
         case TaskState.running:
-          // TODO: show loading state
+        // TODO: show loading state
         case TaskState.success:
-          stopwatch.stop();
-          print('************************');
-          print(stopwatch.elapsedMilliseconds);
-          print('************************');
         case TaskState.error:
-          //TODO: Show error message
+        //TODO: Show error message
         case TaskState.paused:
         case TaskState.canceled:
-          //TODO: cancel uploading photo
+        //TODO: cancel uploading photo
       }
     });
   }

@@ -15,11 +15,9 @@ import 'package:project_x/src/features/profile_feature/domain/usecase/upload_pho
 
 final getIt = GetIt.instance;
 
-//dependency injection = di injection = инъекция
-//D v SOLID - eto Dependency Inversion Princiре
 void setup() {
   ///services
-  // getIt.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
+
   ///datasources
   getIt.registerFactory<AccountDataSource>(() => AccountDataSource());
   getIt.registerFactory<ProfileDataSource>(() => ProfileDataSource());
@@ -30,7 +28,7 @@ void setup() {
   );
 
   getIt.registerFactory<ProfileRepository>(
-        () => ProfileRepositoryImpl(getIt.get<ProfileDataSource>()),
+    () => ProfileRepositoryImpl(getIt.get<ProfileDataSource>()),
   );
 
   ///authUseCases
@@ -44,7 +42,7 @@ void setup() {
     () => LogoutUseCase(getIt.get<AccountRepository>()),
   );
   getIt.registerFactory<UploadPhotoUseCase>(
-          () => UploadPhotoUseCase(getIt.get<ProfileRepository>())
+    () => UploadPhotoUseCase(getIt.get<ProfileRepository>()),
   );
   getIt.registerFactory<SendResetPasswordRequestUseCase>(
     () => SendResetPasswordRequestUseCase(getIt.get<AccountRepository>()),
