@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:project_x/core/utils/stream_debounce.dart';
 import 'package:project_x/src/features/profile_feature/domain/usecase/update_email_usecase.dart';
-import 'package:project_x/src/features/profile_feature/domain/usecase/update_photo_url_usecase.dart';
 import 'package:project_x/src/features/profile_feature/domain/usecase/update_username_usecase.dart';
 import 'package:project_x/src/features/profile_feature/presentation/bloc/bloc_args.dart';
 import 'package:project_x/src/features/profile_feature/presentation/view_models/email_edit_view_model.dart';
@@ -20,11 +19,9 @@ class ProfileEditPageBloc
   ProfileEditPageBloc({
     required UpdateEmailUseCase updateEmailUseCase,
     required UpdateUsernameUseCase updateUsernameUseCase,
-    required UpdatePhotoUrlUseCase updatePhotoUrlUseCase,
     required ProfileBlocsCommunicationsArgs args,
   })  : _updateEmailUseCase = updateEmailUseCase,
         _updateUsernameUseCase = updateUsernameUseCase,
-        _updatePhotoUrlUseCase = updatePhotoUrlUseCase,
         super(
           ProfileEditPageState(
             emailEditViewModel: EmailEditViewModel(value: args.email),
@@ -40,32 +37,10 @@ class ProfileEditPageBloc
       _editUserName,
       transformer: debounceEvent<UpdateUserNameEvent>,
     );
-    on<UpdatePhotoUrlEvent>(_editPhotoUrl);
   }
 
   final UpdateEmailUseCase _updateEmailUseCase;
   final UpdateUsernameUseCase _updateUsernameUseCase;
-  final UpdatePhotoUrlUseCase _updatePhotoUrlUseCase;
-
-  Future<void> _editPhotoUrl(
-    UpdatePhotoUrlEvent event,
-    Emitter<ProfileEditPageState> emit,
-  ) async {
-    try {
-      final photoUrlViewModel = state.photoUrlEditViewModel.copyWith(
-        value: event.photoUrl,
-      );
-      emit(state.copyWith(photoUrlEditViewModel: photoUrlViewModel));
-      await _updatePhotoUrlUseCase.call(photoUrl: event.photoUrl);
-    } catch (e) {
-      emit(
-        state.copyWith(
-          status: ProfileEditStatus.failure,
-          message: '$e',
-        ),
-      );
-    }
-  }
 
   Future<void> _editEmail(
     UpdateEmailEvent event,

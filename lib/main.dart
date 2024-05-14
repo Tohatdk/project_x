@@ -7,5 +7,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FirebaseNotificationService().init();
   setup();
+
   runApp(const MyApp());
 }
