@@ -31,38 +31,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBELxUyRNCo8bDRFmapzteKpr1JorPP4YY',
-    appId: '1:1004062037286:web:368c7cd6ee8707f0639de7',
-    messagingSenderId: '1004062037286',
-    projectId: 'projectxtdk',
-    authDomain: 'projectxtdk.firebaseapp.com',
-    storageBucket: 'projectxtdk.appspot.com',
+    apiKey: 'AIzaSyAvd05G4Fvqjqo2kBvpFz0-kcC0u5uZXdo',
+    appId: '1:11200755384:web:f13f20d6b495928cde664d',
+    messagingSenderId: '11200755384',
+    projectId: 'projectx-1fc9d',
+    authDomain: 'projectx-1fc9d.firebaseapp.com',
+    storageBucket: 'projectx-1fc9d.appspot.com',
+    measurementId: 'G-VW00NQS6ZF',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBPit96mrvf9WjI9CrRRUhPfc7SOOBTJAI',
-    appId: '1:1004062037286:android:b51b43dd0fdbb8ab639de7',
-    messagingSenderId: '1004062037286',
-    projectId: 'projectxtdk',
-    storageBucket: 'projectxtdk.appspot.com',
+    apiKey: 'AIzaSyDop4iQWP3Ao7pKGY1A_54AYRpGAp0xREc',
+    appId: '1:11200755384:android:a075461c65f39df0de664d',
+    messagingSenderId: '11200755384',
+    projectId: 'projectx-1fc9d',
+    storageBucket: 'projectx-1fc9d.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA1L8afg4yUX0iKc-TUj-YG-z03FpRpxS4',
-    appId: '1:1004062037286:ios:ed51ded959b299c0639de7',
-    messagingSenderId: '1004062037286',
-    projectId: 'projectxtdk',
-    storageBucket: 'projectxtdk.appspot.com',
+    apiKey: 'AIzaSyCT9gj21dLk_zXhmHI2tXNAgfs95m1kNME',
+    appId: '1:11200755384:ios:fe17a8863f6e490fde664d',
+    messagingSenderId: '11200755384',
+    projectId: 'projectx-1fc9d',
+    storageBucket: 'projectx-1fc9d.appspot.com',
     iosBundleId: 'kz.tohatdk.projectx',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAoOLO3gyn1-FdPIb-RHug4OqeoPZ3TwtE',
-    appId: '1:667791985478:ios:060e5d4cdb122075423347',
-    messagingSenderId: '667791985478',
-    projectId: 'pushnotitutorial-75506',
-    storageBucket: 'pushnotitutorial-75506.appspot.com',
-    iosBundleId: 'kz.tohawow.cleanarch',
+    apiKey: 'AIzaSyCT9gj21dLk_zXhmHI2tXNAgfs95m1kNME',
+    appId: '1:11200755384:ios:fe17a8863f6e490fde664d',
+    messagingSenderId: '11200755384',
+    projectId: 'projectx-1fc9d',
+    storageBucket: 'projectx-1fc9d.appspot.com',
+    iosBundleId: 'kz.tohatdk.projectx',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(

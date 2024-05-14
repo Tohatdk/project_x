@@ -45,5 +45,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>kTCCServiceMediaLibrary</key>
+    <string>media</string>
+	<key>NSCameraUsageDescription</key>
+    <string>camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>photos</string>
 </dict>
 </plist>
